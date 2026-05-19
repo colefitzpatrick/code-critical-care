@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0b1b2b">
+<title>CODE: Critical Care</title>
+<style>
+  :root{ --bg:#0b1b2b; --card:#13283d; --card2:#1b3a57; --txt:#eaf2fb;
+         --mut:#8fb0cc; --good:#1fbf75; --bad:#e0414d; --accent:#ffb020; --line:#284a6b;}
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--txt);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  body{max-width:560px;margin:0 auto;padding:14px 14px env(safe-area-inset-bottom);min-height:100vh}
+  h1{font-size:20px;margin:6px 0 2px;letter-spacing:.3px}
+  .sub{color:var(--mut);font-size:12px;margin-bottom:12px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:16px;margin:10px 0;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+  .row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .badge{background:var(--card2);border:1px solid var(--line);border-radius:999px;
+    padding:6px 12px;font-size:13px;font-weight:700}
+  .bar{height:10px;background:#0e2236;border-radius:999px;overflow:hidden;border:1px solid var(--line)}
+  .bar > i{display:block;height:100%;background:linear-gradient(90deg,#1fbf75,#7fe3b4);width:0%}
+  button{font:inherit;color:var(--txt);cursor:pointer}
+  .opt{display:block;width:100%;text-align:left;background:var(--card2);
+    border:1px solid var(--line);border-radius:12px;padding:14px;margin:8px 0;font-size:15px;
+    transition:transform .05s, background .15s}
+  .opt:active{transform:scale(.99)}
+  .opt.correct{background:#13402c;border-color:var(--good)}
+  .opt.wrong{background:#3f1620;border-color:var(--bad)}
+  .opt:disabled{opacity:.95;cursor:default}
+  .primary{width:100%;background:linear-gradient(90deg,#ffb020,#ffce6b);color:#22160a;
+    border:0;border-radius:12px;padding:15px;font-size:16px;font-weight:800;margin-top:10px}
+  .ghost{background:transparent;border:1px solid var(--line);border-radius:12px;
+    padding:12px;font-size:14px;color:var(--mut);width:100%}
+  .mods label{display:flex;align-items:center;gap:10px;background:var(--card2);
+    border:1px solid var(--line);border-radius:12px;padding:12px;margin:7px 0;font-size:14px}
+  .mods input{width:20px;height:20px;accent-color:var(--accent)}
+  .hearts{font-size:18px;letter-spacing:2px}
+  .combo{color:var(--accent);font-weight:800}
+  .why{background:#0e2236;border-left:3px solid var(--accent);border-radius:8px;
+    padding:12px;margin-top:12px;font-size:14px;color:#cfe2f3;line-height:1.5}
+  .qmeta{color:var(--mut);font-size:12px;margin-bottom:6px}
+  .q{font-size:17px;line-height:1.45;margin:2px 0 12px;font-weight:600}
+  .big{font-size:34px;font-weight:800;margin:6px 0}
+  .center{text-align:center}
+  .small{font-size:12px;color:var(--mut)}
+  .pill{display:inline-block;background:var(--card2);border:1px solid var(--line);
+    border-radius:999px;padding:3px 9px;font-size:11px;color:var(--mut);margin:2px}
+  .flash{animation:fl .4s ease}
+  @keyframes fl{0%{opacity:.4}100%{opacity:1}}
+  a{color:var(--accent)}
+</style>
+</head>
+<body>
+<h1>🎮 CODE: Critical Care</h1>
+<div class="sub">Tip: open in your phone browser → Share → <b>Add to Home Screen</b>. Works offline, saves progress.</div>
+<div id="app"></div>
+
+<script>
+/* ========================= QUESTION BANK =========================
+   mod: 1..5  |  d: 1 easy / 2 medium / 3 hard  |  a: index of correct option */
+const Q = [
+/* ---------- MODULE 1: Homeostasis & the Cell ---------- */
+{mod:1,d:1,q:"The Na⁺/K⁺-ATPase pump moves:",o:["3 Na⁺ out / 2 K⁺ in per ATP","2 Na⁺ out / 3 K⁺ in, no ATP","K⁺ out / Na⁺ in, passively","Only water"],a:0,w:"3 Na⁺ out / 2 K⁺ in per ATP — the engine that holds every gradient."},
+{mod:1,d:1,q:"The deciding question for passive vs active transport is:",o:["Is the molecule big?","Does it require ATP / go against the gradient?","Is it in the blood?","Is it charged?"],a:1,w:"Active = uphill, needs ATP. Passive = downhill, free."},
+{mod:1,d:1,q:"Resting membrane potential is about −70 mV, set mainly by the gradient of:",o:["Na⁺","Ca²⁺","K⁺","Cl⁻"],a:2,w:"The K⁺ gradient dominates RMP — why K⁺ is 'cardiac gold'."},
+{mod:1,d:1,q:"Ischemia means:",o:["Low oxygen only","Too little blood flow to a tissue","High potassium","A fever"],a:1,w:"Ischemia = a flow deficit (cuts O₂ + glucose + waste removal)."},
+{mod:1,d:1,q:"Shock is best defined as:",o:["An infection","Systemic inadequate perfusion (the endpoint)","Low sodium","A fast heart rate"],a:1,w:"Shock = the perfusion-failure endpoint; many causes."},
+{mod:1,d:2,q:"Rising serum K⁺ classically shows this ECG sequence:",o:["U waves → flat T","Peaked T → wide QRS → sine wave → arrest","No change","ST elevation only"],a:1,w:"Hyperkalemia drifts RMP toward threshold → that lethal sequence."},
+{mod:1,d:2,q:"Why does ischemia kill tissue faster than pure hypoxia?",o:["It only removes O₂","It removes O₂ AND glucose AND waste removal at once","It raises pH","It cools the cell"],a:1,w:"Ischemia is a triple hit; hypoxia is O₂ only."},
+{mod:1,d:2,q:"A hypotonic IV fluid causes cells to:",o:["Shrink","Stay the same","Swell (water enters)","Lyse instantly only if isotonic"],a:2,w:"Water follows solute into the dilute cell → swelling (cerebral edema risk)."},
+{mod:1,d:2,q:"Fever vs hyperthermia: in fever the broken 'block' is the:",o:["Effector (heat removal)","Set point (raised by pyrogens)","Sensor","Pump"],a:1,w:"Fever = set point raised → antipyretic. Hyperthermia = effector failed → cool."},
+{mod:1,d:2,q:"A patient on digoxin with LOW potassium is dangerous because:",o:["Digoxin needs K⁺ to work","K⁺ and digoxin compete at the Na⁺/K⁺ pump → more digoxin binds","Low K⁺ destroys digoxin","They are unrelated"],a:1,w:"Less K⁺ competing → amplified digoxin effect → toxicity/arrhythmias."},
+{mod:1,d:3,q:"One ATP-starved Na⁺/K⁺ pump produces which lab/monitor cluster?",o:["Hypokalemia + high pH","Hyperkalemia + lactate↑ + oliguria + EtCO₂↓","Only high sodium","No detectable change"],a:1,w:"The detection map: K⁺ out (hyperkalemia), anaerobic (lactate), low perfusion (oliguria, EtCO₂↓)."},
+{mod:1,d:3,q:"Septic shock starves cells by which TWO hypoxia types?",o:["Anemic + hypoxemic","Stagnant (delivery) + histotoxic (can't use O₂)","Only stagnant","Only histotoxic"],a:1,w:"Delivery fails AND mitochondria can't use delivered O₂ — the double hit."},
+{mod:1,d:3,q:"MAP (mean arterial pressure) is primarily a measure of:",o:["Blood oxygen content","Perfusion/flow pressure (the ischemia side)","Lung function","Potassium"],a:1,w:"MAP = driving pressure for flow; SpO₂/PaO₂ are the oxygen side."},
+
+/* ---------- MODULE 2: Fluids, Electrolytes & Acid–Base ---------- */
+{mod:2,d:1,q:"Normal arterial pH range is:",o:["7.20–7.30","7.35–7.45","7.50–7.60","6.9–7.1"],a:1,w:"7.35–7.45. Below = acidemia, above = alkalemia."},
+{mod:2,d:1,q:"ROME stands for:",o:["Resp Opposite, Metab Equal","Renal Output, Mean Excretion","Rapid O₂, More Effort","Resp Only, Metab Extra"],a:0,w:"Respiratory: pH & CO₂ move opposite. Metabolic: pH & HCO₃⁻ move equal."},
+{mod:2,d:1,q:"pH is proportional to:",o:["PaCO₂ / HCO₃⁻","HCO₃⁻ (kidney) / PaCO₂ (lungs)","Na⁺ / K⁺","O₂ / CO₂"],a:1,w:"pH ∝ base (HCO₃⁻, slow kidney) / acid (PaCO₂, fast lungs)."},
+{mod:2,d:1,q:"'Na⁺ = water' means serum sodium mostly reflects:",o:["Total body salt","The Na⁺-to-water ratio (concentration)","Potassium","Kidney size"],a:1,w:"Sodium problems are usually water problems; volume rides on Na⁺."},
+{mod:2,d:1,q:"Acidosis shifts potassium:",o:["Into cells (hypokalemia)","Out of cells (hyperkalemia)","No effect","Into urine only"],a:1,w:"H⁺ in, K⁺ out → hyperkalemia. Alkalosis = reverse."},
+{mod:2,d:2,q:"3 days of vomiting tends to cause:",o:["Metabolic acidosis + hyperkalemia","Metabolic alkalosis + hypokalemia","Respiratory acidosis","No change"],a:1,w:"Lose gastric H⁺ → alkalosis; alkalosis drives K⁺ into cells → hypokalemia."},
+{mod:2,d:2,q:"Opioid overdose, RR 6 → expected ABG:",o:["pH↑, PaCO₂↓","pH↓, PaCO₂↑ (respiratory acidosis)","pH↑, HCO₃⁻↑","Normal"],a:1,w:"Hypoventilation retains CO₂ → respiratory acidosis. Fix = ventilation/naloxone."},
+{mod:2,d:2,q:"Why never IV-push potassium?",o:["It's painful","It can cause fatal cardiac arrest","It turns to acid","It lowers sodium"],a:1,w:"Bolus K⁺ is lethal; give diluted/controlled on a monitor. Also check Mg²⁺."},
+{mod:2,d:2,q:"Hypocalcemia is an airway emergency because:",o:["It raises BP","Hyper-excitable nerves → laryngospasm/tetany","It causes bleeding","It stops the heart instantly"],a:1,w:"Low Ca²⁺ destabilizes membranes → laryngospasm + seizures (Trousseau/Chvostek)."},
+{mod:2,d:3,q:"pH 7.30, PaCO₂ 30, HCO₃⁻ 15, anion gap 22, lactate 6 — this is:",o:["Respiratory alkalosis","High-anion-gap metabolic acidosis (treat the cause)","Metabolic alkalosis","Normal compensated"],a:1,w:"Metabolic (pH/HCO₃⁻ equal), high gap from lactate → fix perfusion, not bicarb."},
+{mod:2,d:3,q:"During DKA treatment, potassium typically:",o:["Rises dangerously","Falls — insulin/correction drives K⁺ into cells","Stays fixed","Becomes irrelevant"],a:1,w:"Watch K⁺ obsessively; replace as it crashes (Chain 3 in reverse)."},
+{mod:2,d:3,q:"pH 7.37, PaCO₂ 60, HCO₃⁻ 34 represents:",o:["Acute respiratory acidosis","Fully compensated respiratory acidosis (chronic, e.g. COPD)","Metabolic alkalosis","Lab error"],a:1,w:"Near-normal pH with both CO₂ and HCO₃⁻ high = chronic, fully compensated."},
+
+/* ---------- MODULE 3: Cardiovascular Physiology ---------- */
+{mod:3,d:1,q:"Mean arterial pressure ≈",o:["HR × SV","CO × SVR","SV / HR","Preload × afterload"],a:1,w:"MAP ≈ Cardiac Output × Systemic Vascular Resistance (the body's Ohm's law)."},
+{mod:3,d:1,q:"Cardiac output =",o:["HR × stroke volume","MAP × SVR","SV − HR","Preload + afterload"],a:0,w:"CO = HR × SV. Both levers matter."},
+{mod:3,d:1,q:"Preload is best described as:",o:["Resistance the heart pumps against","Volume/stretch in the ventricle before contraction","Heart rate","Contractility"],a:1,w:"Preload = end-diastolic stretch (venous return/filling)."},
+{mod:3,d:1,q:"Afterload is:",o:["The filling volume","The resistance/pressure the ventricle must overcome to eject","Heart rate","Coronary flow"],a:1,w:"Afterload ≈ what the ventricle pushes against (largely SVR/aortic pressure)."},
+{mod:3,d:2,q:"Frank–Starling principle (within limits):",o:["More preload (stretch) → stronger contraction → more SV","Higher HR always raises CO","Afterload doesn't matter","Contractility is fixed"],a:0,w:"More fiber stretch → stronger ejection — until overstretched (failure)."},
+{mod:3,d:2,q:"Baroreflex response to a sudden BP drop:",o:["Slows HR, dilates vessels","Speeds HR, constricts vessels","No change","Stops the heart"],a:1,w:"Negative-feedback loop: defends BP via ↑HR + vasoconstriction (Mod 1 Ch6)."},
+{mod:3,d:2,q:"Very fast tachycardia can LOWER cardiac output because:",o:["The heart tires","Diastolic filling time shrinks → less preload → less SV","SVR rises","O₂ increases"],a:1,w:"No time to fill → SV falls enough to drop CO despite high rate."},
+{mod:3,d:2,q:"The left ventricle's own muscle is perfused mainly during:",o:["Systole","Diastole","Both equally","Inspiration"],a:1,w:"Coronary perfusion is mostly diastolic — fast HR/low diastolic pressure starves it."},
+{mod:3,d:3,q:"Sepsis causes hypotension largely by:",o:["Massive vasodilation → ↓SVR → ↓MAP","Bradycardia","High preload","Increased contractility"],a:0,w:"Distributive shock: NO-driven vasodilation collapses SVR (links Mod 1)."},
+{mod:3,d:3,q:"Reduced ejection fraction (HFrEF) means:",o:["Too much preload only","The ventricle ejects an abnormally low fraction of its volume","High afterload only","Normal heart"],a:1,w:"EF = SV/EDV; low EF = systolic pump failure."},
+{mod:3,d:3,q:"A pure afterload reducer (vasodilator) in a failing heart will:",o:["Raise the resistance to eject","Lower the resistance to eject → easier forward flow","Stop the heart","Raise potassium"],a:1,w:"↓Afterload eases ejection — a core HF-management lever (Mod 4)."},
+
+/* ---------- MODULE 4: Cardiovascular Pathophysiology ---------- */
+{mod:4,d:1,q:"Heart failure is fundamentally:",o:["An infection","The heart pumping too weakly to meet the body's needs","High potassium","A lung disease"],a:1,w:"Pump can't deliver required output (systolic) or fill properly (diastolic)."},
+{mod:4,d:1,q:"Left-sided heart failure classically causes:",o:["Leg edema only","Pulmonary congestion (crackles, dyspnea)","High sodium","Bradycardia"],a:1,w:"Blood backs up behind the left side → into the lungs."},
+{mod:4,d:1,q:"Troponin is:",o:["A diuretic","A blood marker of cardiac muscle injury","A heart rhythm","An electrolyte"],a:1,w:"Released when myocardium is damaged (e.g., MI)."},
+{mod:4,d:1,q:"A myocardial infarction (MI) is:",o:["Fast heart rate","Heart-muscle death from blocked coronary blood flow","Low BP","A valve infection"],a:1,w:"Coronary occlusion → ischemia → infarction (Mod 1 Chain 1, locally)."},
+{mod:4,d:2,q:"Right-sided heart failure classically causes:",o:["Pulmonary edema","Systemic congestion: leg edema, JVD, liver congestion","Low potassium","Hyperthermia"],a:1,w:"Blood backs up behind the right side → into the body."},
+{mod:4,d:2,q:"Why does a coronary blockage cause cell death (link Module 1)?",o:["Too much ATP","No flow → no O₂/glucose → ATP↓ → Na⁺/K⁺ pump fails → cells swell/die","High pH","Excess calcium only"],a:1,w:"It's Chain 1 locally — the same ATP/pump story."},
+{mod:4,d:2,q:"Main dangers of atrial fibrillation:",o:["Clot/stroke risk + poor rate control","Hyperthermia","Low sodium","Airway loss"],a:0,w:"Stasis → clots/stroke; fast irregular rate → poor filling/CO."},
+{mod:4,d:2,q:"In HF, the body's compensations (fluid retention, vasoconstriction):",o:["Always help","Eventually worsen congestion (compensation can harm — Mod1 Ch6)","Cure the heart","Lower troponin"],a:1,w:"Baroreflex/RAAS 'help' a failing effector → congestion. Compensatory ≠ good."},
+{mod:4,d:3,q:"Cardiogenic vs hypovolemic vs distributive shock — cardiogenic is:",o:["Empty tank","Broken pump (e.g., big MI)","Floppy/leaky pipes","Blocked pipe"],a:1,w:"Pump failure; distinguishing the broken 'block' drives different treatment."},
+{mod:4,d:3,q:"Core rationale for afterload/preload reduction in acute HF:",o:["Raise resistance and volume","Reduce what the failing ventricle must pump against/handle → improve forward flow & relieve congestion","Increase HR only","Give potassium"],a:1,w:"Unload the failing pump (diuretics ↓preload; vasodilators ↓afterload)."},
+{mod:4,d:3,q:"Suspected acute MI — early nurse priorities include:",o:["Ignore until labs","Monitor/ECG, oxygen if hypoxic, aspirin, IV access, pain, alert provider/cath",">3 L hypotonic fluid fast","Ambulate the patient"],a:1,w:"Time = myocardium: rapid recognition, ECG, antiplatelet, reperfusion pathway."},
+
+/* ---------- MODULE 5: Respiratory Physiology & Gas Exchange ---------- */
+{mod:5,d:1,q:"Ventilation primarily controls which blood gas?",o:["O₂","CO₂","HCO₃⁻","K⁺"],a:1,w:"Ventilation = CO₂ clearance. Oxygenation is a separate axis."},
+{mod:5,d:1,q:"Oxygenation refers to:",o:["CO₂ removal","Getting O₂ into the blood (PaO₂/SpO₂)","Heart rate","Acid load"],a:1,w:"Two distinct problems: oxygenation (O₂) vs ventilation (CO₂)."},
+{mod:5,d:1,q:"SpO₂ (pulse oximetry) estimates:",o:["CO₂ level","Hemoglobin oxygen saturation","Blood pressure","pH"],a:1,w:"% of hemoglobin saturated with O₂ — the oxygen side."},
+{mod:5,d:1,q:"The main normal stimulus to breathe is:",o:["Low O₂","Rising CO₂ (and resulting acidity)","High K⁺","Cold"],a:1,w:"Central chemoreceptors respond chiefly to CO₂/pH."},
+{mod:5,d:2,q:"V/Q mismatch means:",o:["Ventilation and perfusion are perfectly matched","Air and blood flow to lung units are mismatched → impaired gas exchange","The heart stopped","High sodium"],a:1,w:"Efficient exchange needs matched ventilation (V) and perfusion (Q)."},
+{mod:5,d:2,q:"Shunt vs dead space:",o:["Same thing","Shunt = perfused but not ventilated; dead space = ventilated but not perfused","Both mean low HR","Both raise pH"],a:1,w:"Shunt → refractory hypoxemia; dead space → wasted ventilation."},
+{mod:5,d:2,q:"A rightward shift of the oxyhemoglobin curve (fever, acidosis, ↑CO₂):",o:["Holds O₂ tighter","Unloads O₂ more easily to tissues","Stops breathing","Raises pH"],a:1,w:"Right shift = easier tissue O₂ delivery (where metabolism is high)."},
+{mod:5,d:2,q:"Type 1 vs Type 2 respiratory failure:",o:["Type 1 = oxygenation problem (low O₂); Type 2 = ventilation problem (high CO₂)","They are identical","Type 1 is always fatal","Type 2 has normal CO₂"],a:0,w:"Maps directly to Module 2: Type 2 → respiratory acidosis."},
+{mod:5,d:3,q:"ARDS causes refractory hypoxemia mainly through:",o:["Dead space only","Widespread shunt (alveoli flooded, perfused but not ventilated)","High pH","Bradycardia"],a:1,w:"Shunt physiology — O₂ alone doesn't fix blood bypassing unventilated alveoli."},
+{mod:5,d:3,q:"Hypoventilation's effect on ABG (link Module 2):",o:["Respiratory alkalosis","Respiratory acidosis (CO₂ retained, pH↓)","Metabolic alkalosis","No change"],a:1,w:"Less ventilation → CO₂ up → pH down. Same axis as the opioid case."},
+{mod:5,d:3,q:"Why caution with high-flow O₂ in some chronic CO₂-retainers?",o:["O₂ is toxic instantly","Can worsen V/Q matching & CO₂ retention (and blunt drive) → rising CO₂","It lowers potassium","It causes fever"],a:1,w:"Target appropriate SpO₂; watch for rising CO₂/somnolence — don't withhold needed O₂, titrate."}
+];
+
+/* ========================= ENGINE ========================= */
+const RANKS=[
+ {n:"🟢 Student",xp:0},{n:"🔵 New Grad RN",xp:120},{n:"🟣 ICU RN",xp:320},
+ {n:"🟠 Rapid Response",xp:640},{n:"🔴 Resus Lead",xp:1050}
+];
+const KEY="codecc_save_v1";
+let S=load();
+function load(){try{return JSON.parse(localStorage.getItem(KEY))||def()}catch(e){return def()}}
+function def(){return{xp:0,bestCombo:0,plays:0,lastDay:"",streak:0,mods:[1]}}
+function save(){localStorage.setItem(KEY,JSON.stringify(S))}
+function rankIdx(){let r=0;for(let i=0;i<RANKS.length;i++)if(S.xp>=RANKS[i].xp)r=i;return r}
+function nextRankXp(){let i=rankIdx();return i<RANKS.length-1?RANKS[i+1].xp:null}
+/* difficulty served scales with rank */
+function allowedDiffs(){const i=rankIdx();return [[1],[1,2],[2],[2,3],[3]][i]||[1]}
+
+let game=null;
+const app=document.getElementById('app');
+
+function home(){
+  const ri=rankIdx(), nx=nextRankXp();
+  const pct = nx? Math.min(100,Math.round(((S.xp-RANKS[ri].xp)/(nx-RANKS[ri].xp))*100)) : 100;
+  app.innerHTML=`
+  <div class="card">
+    <div class="row"><span class="badge">${RANKS[ri].n}</span>
+      <span class="small">${S.xp} XP ${nx?`· next ${nx}`:"· MAX"}</span></div>
+    <div class="bar" style="margin-top:10px"><i style="width:${pct}%"></i></div>
+    <div class="row" style="margin-top:10px">
+      <span class="small">🔥 best combo ${S.bestCombo}</span>
+      <span class="small">🗓️ streak ${S.streak}d · ${S.plays} plays</span></div>
+  </div>
+  <div class="card">
+    <b>Pick modules</b>
+    <div class="mods" id="mods">
+      ${[[1,"Homeostasis & the Cell"],[2,"Fluids · Electrolytes · Acid–Base"],
+         [3,"Cardiovascular Physiology"],[4,"Cardiovascular Patho"],
+         [5,"Respiratory & Gas Exchange"]].map(([m,t])=>`
+        <label><input type="checkbox" value="${m}" ${S.mods.includes(m)?"checked":""}>
+        <span><b>M${m}</b> · ${t}</span></label>`).join("")}
+    </div>
+    <button class="ghost" onclick="allMods()">Select all 5</button>
+    <button class="primary" onclick="start()">▶ Start run (10 Q · ❤️❤️❤️)</button>
+    <div class="small center" style="margin-top:8px">Questions shuffle every run and get harder as you rank up.</div>
+  </div>
+  <div class="card small">
+    <b>How it works:</b> 3 hearts. Wrong = lose a heart + combo resets. Right = XP × combo.
+    Hit the XP threshold → rank up → harder questions unlock. Progress saves on this phone.
+    <div style="margin-top:8px"><button class="ghost" onclick="resetAll()">Reset progress</button></div>
+  </div>`;
+}
+function allMods(){document.querySelectorAll('#mods input').forEach(c=>c.checked=true)}
+function resetAll(){if(confirm("Erase all progress on this device?")){S=def();save();home()}}
+
+function start(){
+  const sel=[...document.querySelectorAll('#mods input:checked')].map(c=>+c.value);
+  if(!sel.length){alert("Pick at least one module");return}
+  S.mods=sel; save();
+  const diffs=allowedDiffs();
+  let pool=Q.filter(x=>sel.includes(x.mod)&&diffs.includes(x.d));
+  if(pool.length<6) pool=Q.filter(x=>sel.includes(x.mod)); // fallback if thin
+  shuffle(pool);
+  game={pool, i:0, n:Math.min(10,pool.length), hearts:3, combo:0, score:0, correct:0};
+  // streak bookkeeping
+  const today=new Date().toISOString().slice(0,10);
+  if(S.lastDay!==today){ S.streak = (S.lastDay===yesterday())? S.streak+1 : 1; S.lastDay=today; }
+  S.plays++; save();
+  question();
+}
+function yesterday(){const d=new Date();d.setDate(d.getDate()-1);return d.toISOString().slice(0,10)}
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}}
+
+function question(){
+  const g=game, item=g.pool[g.i];
+  const opts=item.o.map((t,idx)=>({t,idx}));
+  shuffle(opts);
+  g.cur={item,opts};
+  app.innerHTML=`
+  <div class="card">
+    <div class="row">
+      <span class="hearts">${"❤️".repeat(g.hearts)}${"🖤".repeat(3-g.hearts)}</span>
+      <span class="small">Q ${g.i+1}/${g.n} · M${item.mod} · ${"★".repeat(item.d)}</span>
+    </div>
+    <div class="bar" style="margin-top:8px"><i style="width:${Math.round(g.i/g.n*100)}%"></i></div>
+    <div class="row" style="margin-top:10px">
+      <span class="combo">🔥 combo ×${g.combo}</span><span class="small">score ${g.score}</span></div>
+  </div>
+  <div class="card flash">
+    <div class="qmeta">Module ${item.mod} · difficulty ${item.d}</div>
+    <div class="q">${item.q}</div>
+    <div id="opts">${opts.map((o,k)=>`<button class="opt" onclick="answer(${k})">${o.t}</button>`).join("")}</div>
+    <div id="post"></div>
+  </div>`;
+}
+function answer(k){
+  const g=game,{item,opts}=g.cur;
+  const chosen=opts[k], right = chosen.idx===item.a;
+  const btns=[...document.querySelectorAll('#opts .opt')];
+  btns.forEach((b,idx)=>{ b.disabled=true;
+    if(opts[idx].idx===item.a) b.classList.add('correct');
+    if(idx===k && !right) b.classList.add('wrong'); });
+  if(right){ const gain=10*item.d*Math.max(1,g.combo+1);
+    g.combo++; g.score+=gain; g.correct++; S.xp+=gain;
+    if(g.combo>S.bestCombo)S.bestCombo=g.combo;
+  } else { g.hearts--; g.combo=0; }
+  save();
+  document.getElementById('post').innerHTML=
+    `<div class="why"><b>${right?"✅ +"+(10*item.d*g.combo)+" XP":"❌"}</b> — ${item.w}</div>
+     <button class="primary" onclick="next()">${g.hearts<=0?"See results":"Next ▶"}</button>`;
+}
+function next(){
+  const g=game;
+  if(g.hearts<=0) return results(false);
+  g.i++;
+  if(g.i>=g.n) return results(true);
+  question();
+}
+function results(finished){
+  const g=game, before=rankIdx();
+  // detect rank-up
+  app.innerHTML=`
+  <div class="card center">
+    <div class="big">${finished?"🏁 Run complete":"💀 Out of hearts"}</div>
+    <div>${g.correct}/${g.i+(finished?0:0) || g.correct} correct · score <b>${g.score}</b></div>
+    <div class="small" style="margin-top:6px">🔥 best combo this run: ${g.bestRun||g.combo}</div>
+    <div style="margin-top:10px"><span class="badge">${RANKS[rankIdx()].n}</span></div>
+    ${rankUpMsg(before)}
+    <button class="primary" onclick="home()">Continue</button>
+    <button class="ghost" onclick="start2()">Play again (same modules)</button>
+  </div>
+  <div class="card small center">Tip: do one quick run in any waiting room. Never zero.</div>`;
+}
+let lastRankSeen=rankIdx();
+function rankUpMsg(){ // compares to stored marker
+  const cur=rankIdx();
+  if(cur>lastRankSeen){ lastRankSeen=cur;
+    return `<div class="why" style="border-color:#1fbf75">🎉 <b>RANK UP → ${RANKS[cur].n}</b><br>Harder questions unlocked.</div>`; }
+  return "";
+}
+function start2(){ // replay with saved modules
+  const sel=S.mods, diffs=allowedDiffs();
+  let pool=Q.filter(x=>sel.includes(x.mod)&&diffs.includes(x.d));
+  if(pool.length<6) pool=Q.filter(x=>sel.includes(x.mod));
+  shuffle(pool);
+  game={pool,i:0,n:Math.min(10,pool.length),hearts:3,combo:0,score:0,correct:0};
+  question();
+}
+lastRankSeen=rankIdx();
+home();
+</script>
+</body>
+</html>
