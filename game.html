@@ -43,174 +43,223 @@
   .big{font-size:30px;font-weight:800;margin:6px 0}
   .center{text-align:center}.small{font-size:12px;color:var(--mut)}
   .combo{color:var(--accent);font-weight:800}
+  a{color:var(--accent)}
 </style>
 </head>
 <body>
 <h1>🎮 CODE: Critical Care</h1>
-<div class="sub">Phone → Share → <b>Add to Home Screen</b>. Offline. Progress saves per module.</div>
+<div class="sub"><a href="index.html">← Hub</a> · <a href="study.html">📚 Study</a> ·
+  Add to Home Screen. Each level = a fresh 15.</div>
 <div id="app"></div>
 <script>
-/* ===== BANK  (mod 1-5 | d 1 easy/2 med/3 hard | a = correct index) ===== */
+/* ===== BANK  m=module · d=1 easy/2 med/3 hard · a=correct idx ===== */
 const Q=[
-/* M1 */
-{m:1,d:1,q:"Na⁺/K⁺-ATPase moves:",o:["3 Na⁺ out / 2 K⁺ in per ATP","2 Na⁺ out / 3 K⁺ in, no ATP","K⁺ out / Na⁺ in passively","Only water"],a:0,w:"3 Na⁺ out / 2 K⁺ in per ATP — the engine of every gradient."},
-{m:1,d:1,q:"Passive vs active transport is decided by:",o:["Molecule size","Does it need ATP / go against the gradient?","Is it in blood?","Is it charged?"],a:1,w:"Active = uphill, needs ATP; passive = downhill, free."},
-{m:1,d:1,q:"Resting membrane potential (~−70mV) is set mainly by:",o:["Na⁺","Ca²⁺","K⁺","Cl⁻"],a:2,w:"The K⁺ gradient dominates RMP."},
-{m:1,d:1,q:"Ischemia =",o:["Low oxygen only","Too little blood flow to a tissue","High potassium","Fever"],a:1,w:"A flow deficit (cuts O₂+glucose+waste removal)."},
-{m:1,d:1,q:"Shock =",o:["An infection","Systemic inadequate perfusion (endpoint)","Low sodium","Fast heart rate"],a:1,w:"Perfusion-failure endpoint; many causes."},
-{m:1,d:1,q:"ATP is the cell's:",o:["Waste product","Energy currency","Membrane","Ion"],a:1,w:"What the pump spends to do work."},
-{m:1,d:2,q:"Rising serum K⁺ ECG sequence:",o:["U waves → flat T","Peaked T → wide QRS → sine wave → arrest","No change","ST elevation only"],a:1,w:"Hyperkalemia drifts RMP toward threshold."},
-{m:1,d:2,q:"Why does ischemia kill faster than pure hypoxia?",o:["Removes O₂ only","Removes O₂ AND glucose AND waste removal","Raises pH","Cools the cell"],a:1,w:"Triple hit vs O₂-only."},
-{m:1,d:2,q:"Hypotonic IV fluid makes cells:",o:["Shrink","Unchanged","Swell (water enters)","Clot"],a:2,w:"Water follows solute in → swelling (cerebral edema risk)."},
-{m:1,d:2,q:"In FEVER the broken control block is the:",o:["Effector","Set point (raised by pyrogens)","Sensor","Pump"],a:1,w:"Fever=set point↑→antipyretic; hyperthermia=effector fail→cool."},
-{m:1,d:2,q:"Digoxin + LOW K⁺ is dangerous because:",o:["Digoxin needs K⁺","They compete at the Na⁺/K⁺ pump → more digoxin binds","Low K⁺ destroys digoxin","Unrelated"],a:1,w:"Less competition → amplified digoxin effect → toxicity."},
-{m:1,d:2,q:"Isotonic fluid (0.9% NaCl) mainly:",o:["Swells cells","Stays extracellular, expands volume","Shrinks cells","Is free water"],a:1,w:"~Isotonic → stays in ECF; volume resuscitation."},
-{m:1,d:3,q:"One ATP-starved pump produces:",o:["Hypokalemia + high pH","Hyperkalemia + lactate↑ + oliguria + EtCO₂↓","Only high Na⁺","No change"],a:1,w:"The detection map cluster."},
-{m:1,d:3,q:"Septic shock starves cells via which TWO hypoxia types?",o:["Anemic + hypoxemic","Stagnant (delivery) + histotoxic (can't use O₂)","Only stagnant","Only histotoxic"],a:1,w:"Delivery fails AND mitochondria can't use O₂."},
-{m:1,d:3,q:"MAP primarily measures:",o:["Blood O₂ content","Perfusion/flow pressure (ischemia side)","Lung function","Potassium"],a:1,w:"SpO₂/PaO₂ are the oxygen side; MAP = flow."},
-{m:1,d:3,q:"Pump failure shows in labs mainly as:",o:["Low Na⁺","Hyperkalemia (K⁺ leaves cells)","High Ca²⁺","Low glucose"],a:1,w:"K⁺ is the lab you see; serum Na⁺ shift is not clean."},
-{m:1,d:3,q:"A pathologic positive-feedback loop:",o:["Self-corrects","Won't stop without an external break (e.g., shock spiral)","Stabilizes BP","Is the baroreflex"],a:1,w:"Self-amplifying → must break it from outside."},
-/* M2 */
-{m:2,d:1,q:"Normal arterial pH:",o:["7.20–7.30","7.35–7.45","7.50–7.60","6.9–7.1"],a:1,w:"Below=acidemia, above=alkalemia."},
-{m:2,d:1,q:"ROME =",o:["Resp Opposite, Metab Equal","Renal Output Mean Excretion","Rapid O₂ More Effort","Resp Only Metab Extra"],a:0,w:"Resp: pH&CO₂ opposite. Metab: pH&HCO₃⁻ equal."},
-{m:2,d:1,q:"pH is proportional to:",o:["PaCO₂/HCO₃⁻","HCO₃⁻ (kidney) / PaCO₂ (lungs)","Na⁺/K⁺","O₂/CO₂"],a:1,w:"Base/acid ratio."},
-{m:2,d:1,q:"'Na⁺ = water' means serum Na⁺ reflects:",o:["Total body salt","Na⁺-to-water ratio (concentration)","Potassium","Kidney size"],a:1,w:"Sodium problems are water problems."},
-{m:2,d:1,q:"Acidosis shifts K⁺:",o:["Into cells (hypoK)","Out of cells (hyperK)","No effect","Into urine only"],a:1,w:"H⁺ in, K⁺ out. Alkalosis = reverse."},
-{m:2,d:1,q:"IV potassium must:",o:["Be pushed fast","NEVER be IV push (lethal); give diluted on monitor","Be given with no monitor","Be oral only"],a:1,w:"Bolus K⁺ causes arrest. Also check Mg²⁺."},
-{m:2,d:2,q:"3 days vomiting →",o:["Metabolic acidosis + hyperK","Metabolic alkalosis + hypoK","Respiratory acidosis","No change"],a:1,w:"Lose gastric H⁺→alkalosis→K⁺ into cells."},
-{m:2,d:2,q:"Opioid OD, RR 6 → ABG:",o:["pH↑ PaCO₂↓","pH↓ PaCO₂↑ (resp acidosis)","pH↑ HCO₃⁻↑","Normal"],a:1,w:"Hypoventilation retains CO₂. Fix=ventilation/naloxone."},
-{m:2,d:2,q:"Hypocalcemia is an airway emergency because:",o:["Raises BP","Hyper-excitable nerves → laryngospasm/tetany","Causes bleeding","Stops heart instantly"],a:1,w:"Trousseau/Chvostek; seizure+airway risk."},
-{m:2,d:2,q:"During DKA treatment K⁺ typically:",o:["Rises dangerously","Falls — insulin drives K⁺ into cells","Stays fixed","Is irrelevant"],a:1,w:"Watch K⁺ obsessively; replace as it crashes."},
-{m:2,d:2,q:"In severe hyperkalemia the FIRST drug stabilizes the heart:",o:["Insulin","IV calcium (raises threshold; doesn't lower K⁺)","Albuterol","Dialysis"],a:1,w:"Stabilize → shift → remove."},
-{m:2,d:2,q:"Why correct Na⁺ disorders slowly?",o:["Cost","Rapid shift moves brain water dangerously","Kidney rule","No reason"],a:1,w:"Osmotic demyelination / cerebral edema."},
-{m:2,d:3,q:"pH 7.30, PaCO₂ 30, HCO₃⁻ 15, AG 22, lactate 6:",o:["Resp alkalosis","High-AG metabolic acidosis — treat the cause","Metabolic alkalosis","Normal"],a:1,w:"Metab (pH/HCO₃⁻ equal), gap from lactate → fix perfusion."},
-{m:2,d:3,q:"pH 7.37, PaCO₂ 60, HCO₃⁻ 34:",o:["Acute resp acidosis","Fully compensated resp acidosis (chronic, COPD)","Metabolic alkalosis","Error"],a:1,w:"Near-normal pH, both CO₂ & HCO₃⁻ high = chronic."},
-{m:2,d:3,q:"Classic cause of metabolic alkalosis:",o:["Diarrhea","Vomiting / diuretics","Lactic acidosis","Opioids"],a:1,w:"Loss of acid or volume/Cl⁻/K⁺."},
-{m:2,d:3,q:"Anion gap is used to:",o:["Measure O₂","Subtype metabolic acidosis (high vs normal gap)","Measure pH","Find K⁺"],a:1,w:"High=lactate/ketone/toxin; normal=diarrhea/renal."},
-{m:2,d:3,q:"Septic-shock ABG + fix:",o:["Resp alkalosis; give bicarb","High-AG metabolic acidosis; restore perfusion","Metab alkalosis; fluids","Normal; observe"],a:1,w:"Bicarb chases the number; perfusion fixes the cause."},
-/* M3 */
-{m:3,d:1,q:"MAP ≈",o:["HR×SV","CO×SVR","SV/HR","Preload×afterload"],a:1,w:"Body's Ohm's law."},
-{m:3,d:1,q:"Cardiac output =",o:["HR × SV","MAP × SVR","SV − HR","Preload+afterload"],a:0,w:"Two levers."},
-{m:3,d:1,q:"Preload =",o:["Resistance to eject against","Ventricular stretch/filling before contraction","Heart rate","Contractility"],a:1,w:"End-diastolic stretch."},
-{m:3,d:1,q:"Afterload =",o:["Filling volume","Resistance the ventricle ejects against","Heart rate","Coronary flow"],a:1,w:"≈ SVR/aortic pressure."},
-{m:3,d:1,q:"Stroke volume's 3 dials:",o:["HR, BP, O₂","Preload, contractility, afterload","Na, K, Ca","Rate, rhythm, axis"],a:1,w:"The SV determinants."},
-{m:3,d:1,q:"Coronary (heart-muscle) perfusion occurs mainly in:",o:["Systole","Diastole","Both equal","Inspiration"],a:1,w:"Fast HR/low diastolic pressure starves the heart."},
-{m:3,d:2,q:"Frank–Starling:",o:["More preload → stronger contraction → more SV","Higher HR always ↑CO","Afterload irrelevant","Contractility fixed"],a:0,w:"Until overstretched (failure)."},
-{m:3,d:2,q:"Baroreflex to a sudden BP drop:",o:["Slows HR, dilates","Speeds HR, constricts vessels","No change","Stops heart"],a:1,w:"Neg-feedback BP defense."},
-{m:3,d:2,q:"Very fast HR can LOWER CO because:",o:["Heart tires","Short diastole → less filling → ↓SV","SVR rises","O₂ rises"],a:1,w:"CO=HR×SV can fall despite high rate."},
-{m:3,d:2,q:"Narrow pulse pressure + tachycardia suggests:",o:["Healthy","Early compensated volume loss","High preload","Bradycardia"],a:1,w:"Baroreflex propping MAP — compensated≠stable."},
-{m:3,d:3,q:"Sepsis lowers BP mainly by:",o:["Massive vasodilation → ↓SVR → ↓MAP","Bradycardia","High preload","↑contractility"],a:0,w:"Distributive shock (links M1)."},
-{m:3,d:3,q:"Low ejection fraction (HFrEF) means:",o:["Too much preload","Ventricle ejects an abnormally low fraction","High afterload only","Normal heart"],a:1,w:"EF=SV/EDV; systolic failure."},
-{m:3,d:3,q:"A vasodilator (afterload reducer) in a failing heart:",o:["↑ resistance to eject","↓ resistance to eject → easier forward flow","Stops the heart","Raises K⁺"],a:1,w:"Core HF lever."},
-{m:3,d:3,q:"Match: norepinephrine in septic shock targets:",o:["Preload","SVR (raises it → ↑MAP)","Contractility only","HR only"],a:1,w:"Restores vascular tone to MAP≥65."},
-{m:3,d:3,q:"Fluids in shock primarily raise:",o:["Afterload","Preload","SVR","HR"],a:1,w:"Refill the tank → ↑SV via Starling."},
-{m:3,d:2,q:"Inotrope changes:",o:["Preload","Contractility","Afterload","HR only"],a:1,w:"Positive inotrope = stronger pump."},
-/* M4 */
-{m:4,d:1,q:"Heart failure is:",o:["An infection","Pump too weak/stiff to meet demand","High K⁺","A lung disease"],a:1,w:"Systolic or diastolic."},
-{m:4,d:1,q:"LEFT-sided HF causes:",o:["Leg edema only","Pulmonary congestion (crackles, dyspnea)","High Na⁺","Bradycardia"],a:1,w:"Backs up into the lungs."},
-{m:4,d:1,q:"RIGHT-sided HF causes:",o:["Pulmonary edema","Systemic congestion: leg edema, JVD","Low K⁺","Fever"],a:1,w:"Backs up into the body."},
-{m:4,d:1,q:"Troponin =",o:["A diuretic","Blood marker of cardiac muscle injury","A rhythm","An electrolyte"],a:1,w:"Confirms MI."},
-{m:4,d:1,q:"MI =",o:["Fast heart rate","Heart-muscle death from blocked coronary flow","Low BP","Valve infection"],a:1,w:"M1 Chain 1, locally."},
-{m:4,d:1,q:"BNP is elevated in:",o:["Dehydration","Heart failure / volume overload","Low K⁺","Anemia"],a:1,w:"Stretched ventricles release BNP."},
-{m:4,d:2,q:"Earliest home HF warning + threshold:",o:["Chest pain","Daily weight ↑ >2–3 lb/day or 5 lb/week","Headache","Cough only"],a:1,w:"Fluid before frank dyspnea."},
-{m:4,d:2,q:"MI chain to troponin:",o:["Too much ATP","Blocked flow→no O₂/ATP→pump fails→infarct→troponin","High pH","Excess Ca²⁺"],a:1,w:"Chain 1 in the heart."},
-{m:4,d:2,q:"Atrial fibrillation main dangers:",o:["Clot/stroke + poor rate/filling","Hyperthermia","Low Na⁺","Airway loss"],a:0,w:"Stasis→clot; fast irregular→↓CO."},
-{m:4,d:2,q:"Loop diuretic vs ACE inhibitor on K⁺:",o:["Both raise K⁺","Diuretic LOWERS K⁺, ACE RAISES K⁺","Both lower","No effect"],a:1,w:"Watch the combo (M2 link)."},
-{m:4,d:2,q:"In HF the body's compensations:",o:["Always help","Eventually worsen congestion (compensation can harm)","Cure the heart","Lower troponin"],a:1,w:"M1 Ch6: compensatory≠good."},
-{m:4,d:3,q:"Cardiogenic shock is:",o:["Empty tank","Broken pump (e.g., big MI)","Floppy pipes","Blocked pipe"],a:1,w:"NOT a fluid-bolus problem."},
-{m:4,d:3,q:"Beta-blocker: classic HOLD parameter:",o:["Hold if HR <60 or low SBP","Give regardless","Hold if fever","Hold if high K⁺"],a:0,w:"Also don't stop abruptly."},
-{m:4,d:3,q:"Nitroglycerin is contraindicated with:",o:["Aspirin","PDE-5 inhibitors (sildenafil)","Oxygen","Statins"],a:1,w:"Severe hypotension risk."},
-{m:4,d:3,q:"Digoxin toxicity sign:",o:["Yellow-green visual halos + nausea","Bradycardia only","Rash","High Na⁺"],a:0,w:"Worse with low K⁺."},
-{m:4,d:3,q:"HF teaching — when to call:",o:["Never","Weight ↑ >2–3 lb/day, worsening dyspnea/orthopnea","Only chest pain","After 10 lb"],a:1,w:"Catch decompensation early."},
-{m:4,d:3,q:"Cardiogenic shock: why no fluid bolus?",o:["Cost","Floods a failing pump → worse pulmonary edema","Raises K⁺","Slows HR"],a:1,w:"Pump, not tank — different broken block."},
-/* M5 */
-{m:5,d:1,q:"Ventilation primarily controls:",o:["O₂","CO₂","HCO₃⁻","K⁺"],a:1,w:"Oxygenation is a separate axis."},
-{m:5,d:1,q:"Oxygenation =",o:["CO₂ removal","Getting O₂ into blood (PaO₂/SpO₂)","Heart rate","Acid load"],a:1,w:"Two distinct problems."},
-{m:5,d:1,q:"SpO₂ estimates:",o:["CO₂","Hemoglobin O₂ saturation","BP","pH"],a:1,w:"O₂ side; not O₂ delivery."},
-{m:5,d:1,q:"Main normal drive to breathe:",o:["Low O₂","Rising CO₂ / acidity","High K⁺","Cold"],a:1,w:"Central chemoreceptors."},
-{m:5,d:1,q:"In acute respiratory distress, priority is:",o:["Document","Airway/Breathing first — act","Labs","Reassess in 1 h"],a:1,w:"ABC; emergency = act."},
-{m:5,d:2,q:"V/Q mismatch =",o:["Perfectly matched","Air & blood flow to lung units mismatched","Heart stopped","High Na⁺"],a:1,w:"Impairs gas exchange."},
+/* ---------- M1 ---------- */
+{m:1,d:1,q:"Na⁺/K⁺-ATPase moves:",o:["3 Na⁺ out / 2 K⁺ in per ATP","2 Na⁺ / 3 K⁺, no ATP","K⁺ out / Na⁺ in passively","Only water"],a:0,w:"Engine of every gradient."},
+{m:1,d:1,q:"Passive vs active is decided by:",o:["Size","Needs ATP / against gradient?","In blood?","Charged?"],a:1,w:"Active=uphill+ATP."},
+{m:1,d:1,q:"RMP (~−70mV) is set mainly by:",o:["Na⁺","Ca²⁺","K⁺","Cl⁻"],a:2,w:"K⁺ gradient dominates."},
+{m:1,d:1,q:"Ischemia =",o:["Low O₂ only","Too little blood flow to tissue","High K⁺","Fever"],a:1,w:"Flow deficit."},
+{m:1,d:1,q:"Shock =",o:["Infection","Systemic inadequate perfusion","Low Na⁺","Fast HR"],a:1,w:"Perfusion-failure endpoint."},
+{m:1,d:1,q:"ATP is the cell's:",o:["Waste","Energy currency","Membrane","Ion"],a:1,w:"What the pump spends."},
+{m:1,d:1,q:"Homeostasis =",o:["Constant internal conditions","Random change","Cell death","High BP"],a:0,w:"Regulated stability."},
+{m:1,d:1,q:"ICF is rich in:",o:["Na⁺","K⁺","Cl⁻","Ca²⁺"],a:1,w:"Inside cells = K⁺; ECF = Na⁺."},
+{m:1,d:1,q:"Osmosis: water moves toward:",o:["Higher solute","Lower solute","Higher O₂","Lower temp"],a:0,w:"Equalize water potential."},
+{m:1,d:2,q:"Rising K⁺ ECG sequence:",o:["U waves→flat T","Peaked T→wide QRS→sine→arrest","No change","ST elevation"],a:1,w:"RMP toward threshold."},
+{m:1,d:2,q:"Ischemia kills faster than hypoxia because it cuts:",o:["O₂ only","O₂ + glucose + waste removal","pH","Temperature"],a:1,w:"Triple hit."},
+{m:1,d:2,q:"Hypotonic IV fluid → cells:",o:["Shrink","Unchanged","Swell","Clot"],a:2,w:"Water enters; cerebral-edema risk."},
+{m:1,d:2,q:"In FEVER the broken block is the:",o:["Effector","Set point (pyrogens raise it)","Sensor","Pump"],a:1,w:"Antipyretic resets it."},
+{m:1,d:2,q:"Digoxin + LOW K⁺ danger:",o:["Needs K⁺","Compete at Na⁺/K⁺ pump→more digoxin binds","Destroys digoxin","Unrelated"],a:1,w:"Amplified effect→toxicity."},
+{m:1,d:2,q:"Isotonic 0.9% NaCl mainly:",o:["Swells cells","Stays extracellular, expands volume","Shrinks cells","Is free water"],a:1,w:"Volume resuscitation."},
+{m:1,d:2,q:"D5W after the dextrose is used behaves as:",o:["Hypertonic","Isotonic forever","Free water (effectively hypotonic)","Saline"],a:2,w:"Cells eat glucose → water left."},
+{m:1,d:2,q:"Secondary active transport (e.g., SGLT) uses:",o:["ATP directly","Na⁺'s gradient to drag glucose uphill","Diffusion only","Osmosis"],a:1,w:"Powered by the Na⁺ gradient."},
+{m:1,d:2,q:"Why does O₂ cross the membrane freely but K⁺ not?",o:["O₂ small/nonpolar; K⁺ charged needs a channel","K⁺ is smaller","O₂ uses ATP","They both need pumps"],a:0,w:"Selectivity = control."},
+{m:1,d:3,q:"One ATP-starved pump → labs/monitor:",o:["HypoK + high pH","HyperK + lactate↑ + oliguria + EtCO₂↓","Only high Na⁺","No change"],a:1,w:"Detection-map cluster."},
+{m:1,d:3,q:"Septic shock starves cells via:",o:["Anemic+hypoxemic","Stagnant (delivery) + histotoxic (can't use O₂)","Only stagnant","Only histotoxic"],a:1,w:"Double hit."},
+{m:1,d:3,q:"MAP primarily measures:",o:["O₂ content","Perfusion/flow pressure","Lung function","K⁺"],a:1,w:"Flow side, not O₂."},
+{m:1,d:3,q:"Pump failure shows in labs as:",o:["Low Na⁺","Hyperkalemia (K⁺ exits cells)","High Ca²⁺","Low glucose"],a:1,w:"K⁺ is the visible one."},
+{m:1,d:3,q:"Pathologic positive feedback:",o:["Self-corrects","Won't stop without an external break","Stabilizes BP","Is the baroreflex"],a:1,w:"Shock spiral."},
+{m:1,d:3,q:"EtCO₂ falls in shock because:",o:["Lungs fail","Low flow can't carry CO₂ to lungs","CO₂ stuck in cells","O₂ rises"],a:1,w:"Transport problem."},
+{m:1,d:3,q:"Visible body swelling in critical illness is:",o:["Cellular swelling","Interstitial edema (different compartment)","Hyperkalemia","Dead space"],a:1,w:"Cell swelling is microscopic."},
+{m:1,d:3,q:"Histotoxic hypoxia =",o:["No blood flow","Cells can't USE delivered O₂","Low hemoglobin","Low FiO₂"],a:1,w:"Sepsis/cyanide; O₂ arrives, unusable."},
+/* ---------- M2 ---------- */
+{m:2,d:1,q:"Normal arterial pH:",o:["7.20–7.30","7.35–7.45","7.50–7.60","6.9–7.1"],a:1,w:"<acidemia, >alkalemia."},
+{m:2,d:1,q:"ROME =",o:["Resp Opposite, Metab Equal","Renal Output Mean","Rapid O₂","Resp Only"],a:0,w:"Resp pH&CO₂ opposite; Metab pH&HCO₃ equal."},
+{m:2,d:1,q:"pH ∝",o:["PaCO₂/HCO₃⁻","HCO₃⁻ (kidney) / PaCO₂ (lungs)","Na/K","O₂/CO₂"],a:1,w:"Base/acid."},
+{m:2,d:1,q:"'Na⁺ = water' → serum Na⁺ reflects:",o:["Total salt","Na⁺-to-water ratio","K⁺","Kidney size"],a:1,w:"Concentration, not total."},
+{m:2,d:1,q:"Acidosis shifts K⁺:",o:["Into cells","Out of cells (hyperK)","No effect","Urine only"],a:1,w:"H⁺ in, K⁺ out."},
+{m:2,d:1,q:"IV potassium:",o:["Push fast","NEVER push; diluted on monitor","No monitor","Oral only"],a:1,w:"Bolus = arrest."},
+{m:2,d:1,q:"Normal HCO₃⁻:",o:["22–26","35–45","7.35–7.45","80–100"],a:0,w:"The base term (kidney)."},
+{m:2,d:1,q:"Lungs control which value?",o:["HCO₃⁻","PaCO₂","Na⁺","Lactate"],a:1,w:"Fast controller."},
+{m:2,d:2,q:"3 days vomiting →",o:["Met acidosis+hyperK","Met alkalosis+hypoK","Resp acidosis","No change"],a:1,w:"Lose H⁺→alkalosis→K⁺ in."},
+{m:2,d:2,q:"Opioid OD RR6 ABG:",o:["pH↑ CO₂↓","pH↓ CO₂↑ (resp acidosis)","pH↑ HCO₃↑","Normal"],a:1,w:"Hypoventilation. Fix=naloxone/vent."},
+{m:2,d:2,q:"Hypocalcemia airway emergency:",o:["↑BP","Hyper-excitable nerves→laryngospasm/tetany","Bleeding","Stops heart"],a:1,w:"Trousseau/Chvostek."},
+{m:2,d:2,q:"DKA treatment → K⁺:",o:["Rises","Falls — insulin drives K⁺ into cells","Fixed","Irrelevant"],a:1,w:"Replace + monitor."},
+{m:2,d:2,q:"First drug in severe hyperK stabilizes heart:",o:["Insulin","IV calcium","Albuterol","Dialysis"],a:1,w:"Stabilize→shift→remove."},
+{m:2,d:2,q:"Why correct Na⁺ slowly?",o:["Cost","Rapid shift moves brain water dangerously","Kidney rule","No reason"],a:1,w:"Demyelination / cerebral edema."},
+{m:2,d:2,q:"Kussmaul breathing =",o:["Lungs compensating for metabolic acidosis","Resp alkalosis cause","Normal sleep","Heart failure sign"],a:0,w:"Blow off CO₂ in DKA."},
+{m:2,d:2,q:"Glucose given WITH insulin in hyperK because:",o:["Raises K⁺","Prevents hypoglycemia","Is the treatment","Lowers Na⁺"],a:1,w:"Insulin is the K⁺ mover."},
+{m:2,d:3,q:"pH7.30 CO₂30 HCO₃15 AG22 lactate6:",o:["Resp alkalosis","High-AG metabolic acidosis — treat cause","Met alkalosis","Normal"],a:1,w:"Fix perfusion, not bicarb."},
+{m:2,d:3,q:"pH7.37 CO₂60 HCO₃34:",o:["Acute resp acidosis","Fully compensated resp acidosis (COPD)","Met alkalosis","Error"],a:1,w:"Near-normal pH, both high = chronic."},
+{m:2,d:3,q:"Metabolic alkalosis classic cause:",o:["Diarrhea","Vomiting / diuretics","Lactic acidosis","Opioids"],a:1,w:"Lose acid/volume."},
+{m:2,d:3,q:"Anion gap is used to:",o:["Measure O₂","Subtype metabolic acidosis","Measure pH","Find K⁺"],a:1,w:"High=lactate/ketone/tox."},
+{m:2,d:3,q:"Anxious post-op, RR30, tingling, normal O₂:",o:["Resp acidosis","Resp alkalosis (↓CO₂) → treat the cause","Met acidosis","Normal"],a:1,w:"Hyperventilation; find why."},
+{m:2,d:3,q:"AEIOU (need for CRRT/dialysis) — the 'E' is:",o:["Edema","Electrolytes: refractory hyperkalemia","Embolism","Eosinophils"],a:1,w:"Most lethal single trigger."},
+{m:2,d:3,q:"Hypernatremia symptom:",o:["Seizures from swelling","Thirst, confusion (cells dehydrate)","Bradycardia","Hyperkalemia"],a:1,w:"Water pulled out of cells."},
+{m:2,d:3,q:"Septic-shock ABG + fix:",o:["Resp alkalosis; bicarb","High-AG metabolic acidosis; restore perfusion","Met alkalosis; fluids","Normal"],a:1,w:"Perfusion fixes cause."},
+/* ---------- M3 ---------- */
+{m:3,d:1,q:"MAP ≈",o:["HR×SV","CO×SVR","SV/HR","Pre×after"],a:1,w:"Body's Ohm's law."},
+{m:3,d:1,q:"CO =",o:["HR×SV","MAP×SVR","SV−HR","Pre+after"],a:0,w:"Two levers."},
+{m:3,d:1,q:"Preload =",o:["Resistance to eject","Filling/stretch before contraction","HR","Contractility"],a:1,w:"End-diastolic stretch."},
+{m:3,d:1,q:"Afterload =",o:["Filling volume","Resistance ventricle ejects against","HR","Coronary flow"],a:1,w:"≈SVR."},
+{m:3,d:1,q:"SV's 3 dials:",o:["HR,BP,O₂","Preload, contractility, afterload","Na,K,Ca","Rate,rhythm,axis"],a:1,w:"The determinants."},
+{m:3,d:1,q:"Contractility =",o:["Filling","Pump strength independent of load","Resistance","Rate"],a:1,w:"Pump gain."},
+{m:3,d:1,q:"Coronary perfusion occurs mainly in:",o:["Systole","Diastole","Both equal","Inspiration"],a:1,w:"Fast HR starves the heart."},
+{m:3,d:1,q:"Venous return mainly sets:",o:["Afterload","Preload","SVR","HR"],a:1,w:"More in → more stretch."},
+{m:3,d:2,q:"Frank–Starling:",o:["More preload→stronger contraction→more SV","↑HR always ↑CO","Afterload irrelevant","Contractility fixed"],a:0,w:"Until overstretched."},
+{m:3,d:2,q:"Baroreflex to ↓BP:",o:["Slows HR, dilates","Speeds HR, constricts vessels","No change","Stops heart"],a:1,w:"Neg-feedback defense."},
+{m:3,d:2,q:"Very fast HR can LOWER CO because:",o:["Heart tires","Short diastole→less filling→↓SV","SVR rises","O₂ rises"],a:1,w:"CO=HR×SV can fall."},
+{m:3,d:2,q:"Narrow pulse pressure + tachycardia:",o:["Healthy","Early compensated volume loss","High preload","Bradycardia"],a:1,w:"Compensated≠stable."},
+{m:3,d:2,q:"Afterload is increased by:",o:["Vasodilation","Vasoconstriction / hypertension","Bleeding","Bradycardia"],a:1,w:"Higher SVR to eject against."},
+{m:3,d:2,q:"Inotrope changes:",o:["Preload","Contractility","Afterload","HR only"],a:1,w:"Positive=stronger pump."},
+{m:3,d:2,q:"Frank–Starling limit (overstretch) →",o:["Stronger forever","Failing contraction (heart failure)","No effect","Faster HR"],a:1,w:"Beyond optimum, SV falls."},
+{m:3,d:3,q:"Sepsis lowers BP mainly by:",o:["Vasodilation→↓SVR→↓MAP","Bradycardia","High preload","↑contractility"],a:0,w:"Distributive shock."},
+{m:3,d:3,q:"Low EF (HFrEF) means:",o:["Too much preload","Ventricle ejects an abnormally low fraction","High afterload only","Normal"],a:1,w:"EF=SV/EDV; systolic failure."},
+{m:3,d:3,q:"A vasodilator in a failing heart:",o:["↑resistance to eject","↓afterload → easier forward flow","Stops heart","Raises K⁺"],a:1,w:"Core HF lever."},
+{m:3,d:3,q:"Norepinephrine in septic shock targets:",o:["Preload","SVR (↑ → ↑MAP)","Contractility only","HR only"],a:1,w:"Restores tone to MAP≥65."},
+{m:3,d:3,q:"Fluids in shock primarily raise:",o:["Afterload","Preload","SVR","HR"],a:1,w:"Refill the tank → ↑SV."},
+{m:3,d:3,q:"Cardiogenic shock is:",o:["Empty tank","Broken pump (big MI)","Floppy pipes","Blocked pipe"],a:1,w:"NOT a fluid-bolus problem."},
+{m:3,d:3,q:"Baroreceptors are located in:",o:["Lungs","Carotid sinus & aortic arch","Kidneys","Brainstem only"],a:1,w:"Sense arterial pressure."},
+{m:3,d:2,q:"Pure afterload reducer effect:",o:["Harder ejection","Easier ejection / better forward flow","↑SVR","↑HR"],a:1,w:"Vasodilator unloads the pump."},
+{m:3,d:1,q:"Diastole vs systole:",o:["Filling vs contracting","Contracting vs filling","Both filling","Both contracting"],a:0,w:"Coronary flow ≈ diastolic."},
+{m:3,d:3,q:"Tachyarrhythmia + falling BP:",o:["Fine, high rate","Emergency — poor filling → ↓CO; rate control/cardiovert","Give fluids only","Ignore"],a:1,w:"Fast ≠ good output."},
+{m:3,d:2,q:"Ejection fraction is:",o:["HR×SV","SV ÷ end-diastolic volume","MAP/SVR","Preload×2"],a:1,w:"Fraction of filled volume ejected."},
+/* ---------- M4 ---------- */
+{m:4,d:1,q:"Heart failure is:",o:["Infection","Pump too weak/stiff to meet demand","High K⁺","Lung disease"],a:1,w:"Systolic or diastolic."},
+{m:4,d:1,q:"LEFT HF causes:",o:["Leg edema only","Pulmonary congestion (crackles, dyspnea)","High Na⁺","Bradycardia"],a:1,w:"Backs into lungs."},
+{m:4,d:1,q:"RIGHT HF causes:",o:["Pulmonary edema","Systemic congestion: leg edema, JVD","Low K⁺","Fever"],a:1,w:"Backs into body."},
+{m:4,d:1,q:"Troponin =",o:["Diuretic","Marker of cardiac muscle injury","A rhythm","Electrolyte"],a:1,w:"Confirms MI."},
+{m:4,d:1,q:"MI =",o:["Fast HR","Heart-muscle death from blocked coronary flow","Low BP","Valve infection"],a:1,w:"Chain 1, locally."},
+{m:4,d:1,q:"BNP rises in:",o:["Dehydration","Heart failure / volume overload","Low K⁺","Anemia"],a:1,w:"Stretched ventricles."},
+{m:4,d:1,q:"Nitroglycerin teaching:",o:["Stand up, take 5","Sit, 1 q5min ×3, call if no relief","Chew 4","Take with sildenafil"],a:1,w:"Hypotension/headache expected."},
+{m:4,d:2,q:"Earliest home HF warning:",o:["Chest pain","Daily weight ↑ >2–3 lb/day","Headache","Cough only"],a:1,w:"Fluid before frank dyspnea."},
+{m:4,d:2,q:"MI chain to troponin:",o:["Too much ATP","Blocked flow→no ATP→pump fails→infarct→troponin","High pH","Excess Ca²⁺"],a:1,w:"Chain 1 in the heart."},
+{m:4,d:2,q:"Atrial fibrillation dangers:",o:["Clot/stroke + poor filling","Hyperthermia","Low Na⁺","Airway loss"],a:0,w:"Stasis→clot; fast→↓CO."},
+{m:4,d:2,q:"Loop diuretic vs ACE on K⁺:",o:["Both ↑K⁺","Diuretic LOWERS, ACE RAISES K⁺","Both lower","No effect"],a:1,w:"Watch the combo."},
+{m:4,d:2,q:"HF compensations long-term:",o:["Always help","Worsen congestion (compensation can harm)","Cure heart","Lower troponin"],a:1,w:"Compensatory≠good."},
+{m:4,d:2,q:"ACE inhibitor side effect:",o:["Dry cough + ↑K⁺","↓K⁺","Bradycardia","Fever"],a:0,w:"Also first-dose hypotension."},
+{m:4,d:2,q:"Digoxin: hold if:",o:["HR <60 (check apical 1 min)","HR >80","BP high","Fever"],a:0,w:"Narrow therapeutic; ↓K⁺↑toxicity."},
+{m:4,d:2,q:"Statin teaching — report:",o:["Headache","Muscle pain / dark urine","Sneezing","Dry skin"],a:1,w:"Rhabdo risk."},
+{m:4,d:3,q:"Cardiogenic shock is:",o:["Empty tank","Broken pump","Floppy pipes","Blocked pipe"],a:1,w:"No fluid bolus."},
+{m:4,d:3,q:"Beta-blocker classic HOLD:",o:["HR <60 or low SBP","Always give","Fever","High K⁺"],a:0,w:"Don't stop abruptly."},
+{m:4,d:3,q:"Nitroglycerin contraindicated with:",o:["Aspirin","PDE-5 (sildenafil)","Oxygen","Statins"],a:1,w:"Severe hypotension."},
+{m:4,d:3,q:"Digoxin toxicity sign:",o:["Yellow-green halos + nausea","Bradycardia only","Rash","High Na⁺"],a:0,w:"Worse with low K⁺."},
+{m:4,d:3,q:"Cardiogenic shock — why no fluid bolus?",o:["Cost","Floods a failing pump → worse pulmonary edema","↑K⁺","Slows HR"],a:1,w:"Pump, not tank."},
+{m:4,d:3,q:"Suspected MI first priorities:",o:["Wait for labs","ECG ≤10 min, ASA, O₂ if low, nitro, IV/monitor, alert","3L fluid fast","Ambulate"],a:1,w:"Time = muscle."},
+{m:4,d:3,q:"Delegation: stable daily weight can go to:",o:["Only RN","UAP (reports value to RN)","Provider","Pharmacist"],a:1,w:"Stable, routine = UAP."},
+{m:4,d:3,q:"Priority patient:",o:["Chronic stable leg edema","New chest pain / SpO₂ 86%","Scheduled teaching","Stable on telemetry"],a:1,w:"ABC + acute first."},
+{m:4,d:1,q:"Left vs right HF — JVD is:",o:["Left sign","Right-sided sign","Both equally","Normal"],a:1,w:"Systemic backup."},
+{m:4,d:2,q:"Orthopnea (worse lying flat) suggests:",o:["Right HF","Left HF / pulmonary congestion","Anemia","Low K⁺"],a:1,w:"Relieved sitting up."},
+{m:4,d:2,q:"AF stroke prevention:",o:["Statin","Anticoagulation","Diuretic","Oxygen"],a:1,w:"Stasis clot risk."},
+/* ---------- M5 ---------- */
+{m:5,d:1,q:"Ventilation primarily controls:",o:["O₂","CO₂","HCO₃⁻","K⁺"],a:1,w:"Separate from oxygenation."},
+{m:5,d:1,q:"Oxygenation =",o:["CO₂ removal","O₂ into blood (PaO₂/SpO₂)","HR","Acid load"],a:1,w:"Two problems."},
+{m:5,d:1,q:"SpO₂ estimates:",o:["CO₂","Hb O₂ saturation","BP","pH"],a:1,w:"O₂ side; not delivery."},
+{m:5,d:1,q:"Main drive to breathe:",o:["Low O₂","Rising CO₂/acidity","High K⁺","Cold"],a:1,w:"Central chemoreceptors."},
+{m:5,d:1,q:"Acute respiratory distress priority:",o:["Document","Airway/Breathing first — act","Labs","Reassess in 1h"],a:1,w:"ABC; emergency=act."},
+{m:5,d:1,q:"Incentive spirometer:",o:["Lowers BP","Prevents atelectasis (deep breaths post-op)","Gives O₂","Suctions"],a:1,w:"~10×/hr awake."},
+{m:5,d:1,q:"Type 2 respiratory failure =",o:["Low O₂","High CO₂ (ventilation problem)","Normal gas","Low HR"],a:1,w:"→ respiratory acidosis (M2)."},
+{m:5,d:2,q:"V/Q mismatch =",o:["Perfectly matched","Air & blood flow to units mismatched","Heart stopped","High Na⁺"],a:1,w:"Impairs exchange."},
 {m:5,d:2,q:"Shunt vs dead space:",o:["Same","Shunt=perfused not ventilated; dead space=ventilated not perfused","Both ↓HR","Both ↑pH"],a:1,w:"Shunt→refractory hypoxemia."},
-{m:5,d:2,q:"Right shift of O₂–Hb curve (fever, acidosis):",o:["Holds O₂ tighter","Unloads O₂ to tissues more easily","Stops breathing","Raises pH"],a:1,w:"Delivery where metabolism is high."},
-{m:5,d:2,q:"Type 1 vs Type 2 respiratory failure:",o:["Type1=oxygenation(low O₂); Type2=ventilation(high CO₂)","Identical","Type1 always fatal","Type2 normal CO₂"],a:0,w:"Type 2 → respiratory acidosis (M2)."},
-{m:5,d:2,q:"Incentive spirometer is used to:",o:["Lower BP","Prevent atelectasis (deep breaths, post-op)","Give O₂","Suction"],a:1,w:"~10×/hr while awake."},
-{m:5,d:3,q:"ARDS causes refractory hypoxemia via:",o:["Dead space only","Widespread shunt (alveoli flooded)","High pH","Bradycardia"],a:1,w:"O₂ alone won't fix shunt → escalate (PEEP/vent)."},
-{m:5,d:3,q:"Hypoventilation's ABG effect:",o:["Resp alkalosis","Resp acidosis (CO₂↑, pH↓)","Metab alkalosis","No change"],a:1,w:"Same axis as the opioid case (M2)."},
-{m:5,d:3,q:"COPD chronic retainer + O₂:",o:["Withhold O₂","Titrate to ordered target (~88–92%), watch CO₂/drowsiness","Always 15 L","O₂ is toxic instantly"],a:1,w:"Don't withhold needed O₂; don't over-oxygenate blindly."},
-{m:5,d:3,q:"Sudden dyspnea, sharp pain, clear lungs, SpO₂ 86%:",o:["Pneumonia","PE (dead space)","Asthma","Normal"],a:1,w:"Clot blocks perfusion → dead space."},
-{m:5,d:3,q:"Refractory low SpO₂ on high O₂ — best action:",o:["Increase O₂ and recheck in 1 h","Escalate (shunt physiology — needs PEEP/vent)","Document only","Stop O₂"],a:1,w:"More FiO₂ won't fix a shunt."},
-{m:5,d:2,q:"Asthma inhaler order:",o:["Steroid then rescue","Rescue (bronchodilator) THEN steroid; rinse after steroid","Only steroid","Order irrelevant"],a:1,w:"Open airways first; rinse prevents thrush."}
+{m:5,d:2,q:"Right shift of O₂–Hb curve:",o:["Holds O₂ tighter","Unloads O₂ to tissues more easily","Stops breathing","Raises pH"],a:1,w:"Fever/acidosis/↑CO₂."},
+{m:5,d:2,q:"Type 1 vs Type 2:",o:["T1 oxygenation(low O₂); T2 ventilation(high CO₂)","Identical","T1 fatal","T2 normal CO₂"],a:0,w:"T2 → resp acidosis."},
+{m:5,d:2,q:"Pursed-lip breathing helps by:",o:["Speeding exhale","Slowing exhale, preventing airway collapse","Raising CO₂","Lowering O₂"],a:1,w:"COPD technique."},
+{m:5,d:2,q:"Asthma inhaler order:",o:["Steroid then rescue","Rescue (bronchodilator) THEN steroid; rinse after","Only steroid","Irrelevant"],a:1,w:"Open airways first."},
+{m:5,d:2,q:"Non-rebreather mask is for:",o:["Mild stable","Emergency / severe hypoxia","Eating","Sleep"],a:1,w:"~60–95% FiO₂."},
+{m:5,d:2,q:"Capnography/EtCO₂ catches:",o:["Hyperkalemia","Hypoventilation early (before SpO₂ falls)","Low Na⁺","Anemia"],a:1,w:"Real-time ventilation/perfusion."},
+{m:5,d:3,q:"ARDS refractory hypoxemia via:",o:["Dead space","Widespread shunt (flooded alveoli)","High pH","Bradycardia"],a:1,w:"O₂ won't fix → PEEP/vent."},
+{m:5,d:3,q:"Hypoventilation ABG:",o:["Resp alkalosis","Resp acidosis (CO₂↑ pH↓)","Met alkalosis","No change"],a:1,w:"M2 link."},
+{m:5,d:3,q:"COPD chronic retainer + O₂:",o:["Withhold O₂","Titrate to ordered target (~88–92%), watch CO₂/drowsy","Always 15L","O₂ toxic instantly"],a:1,w:"Don't withhold; don't over-oxygenate blindly."},
+{m:5,d:3,q:"Sudden dyspnea, sharp pain, clear lungs, SpO₂86%:",o:["Pneumonia","PE (dead space)","Asthma","Normal"],a:1,w:"Clot blocks perfusion."},
+{m:5,d:3,q:"Refractory low SpO₂ on high O₂ — best:",o:["↑O₂, recheck in 1h","Escalate (shunt — needs PEEP/vent)","Document only","Stop O₂"],a:1,w:"More FiO₂ won't fix shunt."},
+{m:5,d:3,q:"Opioid → which failure + reversal:",o:["Type1; fluids","Type2 (hypoventilation); naloxone","Type1; naloxone","None"],a:1,w:"CO₂↑ → resp acidosis."},
+{m:5,d:3,q:"Delegation in acute resp distress:",o:["UAP manages it","RN assesses/acts; never leave patient","Document later","Provider only by phone"],a:1,w:"Unstable airway = RN, act."},
+{m:5,d:1,q:"Diffusion (Fick) improves with:",o:["Thicker membrane","More area, bigger ΔP, thinner membrane","Less area","Edema"],a:1,w:"Edema/fibrosis impair it."},
+{m:5,d:2,q:"SpO₂ can be misleading in:",o:["Healthy lungs","Anemia / CO poisoning / poor perfusion","High altitude only","Never"],a:1,w:"Saturation ≠ delivery."},
+{m:5,d:3,q:"First action — patient in acute distress:",o:["Chart it","Position upright + O₂ + call; stay","Reassess in 1h","Order labs only"],a:1,w:"Airway/Breathing now."}
 ];
+Q.forEach((q,i)=>q.id=i);
+
 const RANKS=["🟢 Student","🔵 New Grad RN","🟣 ICU RN","🟠 Rapid Response","🔴 Resus Lead"];
 const MN={1:"Homeostasis & the Cell",2:"Fluids · Lytes · Acid–Base",3:"Cardiovascular Physiology",4:"Cardiovascular Patho",5:"Respiratory & Gas Exchange"};
-const RUN=15, PASS=11, MAXLVL=4, KEY="codecc_v2";
+const RUN=15, PASS=11, MAXLVL=4, KEY="codecc_v3";
 let S=load();
-function def(){return{prog:{},best:0,streak:0,lastDay:"",sel:[1]}}
+function def(){return{prog:{},seen:{},last:{},best:0,streak:0,lastDay:"",sel:[1]}}
 function load(){try{return Object.assign(def(),JSON.parse(localStorage.getItem(KEY)))}catch(e){return def()}}
 function save(){localStorage.setItem(KEY,JSON.stringify(S))}
-function keyOf(sel){return sel.slice().sort((a,b)=>a-b).join("-")}
-function lvl(sel){return S.prog[keyOf(sel)]||0}
-function setLvl(sel,v){S.prog[keyOf(sel)]=v;save()}
+function keyOf(s){return s.slice().sort((a,b)=>a-b).join("-")}
+function lvl(s){return S.prog[keyOf(s)]||0}
+function setLvl(s,v){S.prog[keyOf(s)]=v;save()}
 const app=document.getElementById('app');
 let G=null;
-
-/* difficulty mix per level (run is sorted easy→hard so it ramps) */
-const BAND=[[1,1,2],[1,2,2],[2,2,3],[2,3,3],[3,3,3]];
-function buildRun(sel,level){
-  const want=BAND[level], all=Q.filter(x=>sel.includes(x.m));
-  let chosen=[];
-  // fill from wanted difficulties first
-  want.forEach(d=>{});
-  const byD={1:shuf(all.filter(x=>x.d===1)),2:shuf(all.filter(x=>x.d===2)),3:shuf(all.filter(x=>x.d===3))};
-  // target counts from BAND distribution scaled to RUN
-  const cnt={1:0,2:0,3:0}; want.forEach(d=>cnt[d]++);
-  const tot=want.length;
-  [1,2,3].forEach(d=>{ let n=Math.round(RUN*cnt[d]/tot); for(let i=0;i<n && byD[d].length;i++) chosen.push(byD[d].pop()); });
-  // top up to RUN with closest available (no duplicates)
-  let leftover=[...byD[1],...byD[2],...byD[3]];
-  leftover.sort((a,b)=>Math.abs(a.d-level/2)-Math.abs(b.d-level/2));
-  while(chosen.length<RUN && leftover.length) chosen.push(leftover.shift());
-  chosen=chosen.slice(0,RUN).sort((a,b)=>a.d-b.d);   // ramp easy→hard
-  return chosen;
-}
 function shuf(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a}
 
+/* fresh, non-repeating 15 per level; difficulty preference rises with level */
+function buildRun(sel,level){
+  const k=keyOf(sel), pool=Q.filter(x=>sel.includes(x.m));
+  let seen=S.seen[k]||[];
+  let unseen=pool.filter(q=>!seen.includes(q.id));
+  let cycled=false;
+  if(unseen.length<RUN){                       // exhausted → new cycle
+    cycled=true;
+    const last=S.last[k]||[];
+    S.seen[k]=[]; seen=[];
+    unseen=pool.filter(q=>!last.includes(q.id)); // never repeat the prior level's set
+    if(unseen.length<RUN) unseen=pool.slice();
+  }
+  const want=[1,1.6,2,2.4,3][level];           // harder each level
+  unseen=shuf(unseen).sort((a,b)=>Math.abs(a.d-want)-Math.abs(b.d-want));
+  let pick=unseen.slice(0,RUN).sort((a,b)=>a.d-b.d); // ramp within run
+  const ids=pick.map(q=>q.id);
+  S.seen[k]=(S.seen[k]||[]).concat(ids);
+  S.last[k]=ids; save();
+  return {pick,cycled};
+}
+
 function home(){
-  const sel=S.sel, L=lvl(sel);
+  const sel=S.sel,L=lvl(sel);
   app.innerHTML=`
   <div class="card">
     <div class="row"><span class="badge">${RANKS[L]}</span>
-      <span class="small">Level ${L+1}/5 · ${sel.length>1?"mixed set":"M"+sel[0]}</span></div>
-    <div class="bar" style="margin-top:10px"><i style="width:${(L/MAXLVL*100)}%"></i></div>
-    <div class="small" style="margin-top:8px">🔥 best combo ${S.best} · 🗓️ streak ${S.streak}d ·
-      reach 🔴 + pass → next module at 🟢</div>
+      <span class="small">Level ${L+1}/5 · ${sel.length>1?"mixed":"M"+sel[0]}</span></div>
+    <div class="bar" style="margin-top:10px"><i style="width:${L/MAXLVL*100}%"></i></div>
+    <div class="small" style="margin-top:8px">🔥 best ${S.best} · 🗓️ ${S.streak}d ·
+      each level = a <b>fresh 15</b> (no repeats until the bank cycles)</div>
   </div>
   <div class="card">
-    <b>Pick module(s)</b> <span class="small">— switching shows that set's own level</span>
+    <b>Pick module(s)</b> <span class="small">— each has its own level</span>
     <div class="mods" id="mods">
       ${[1,2,3,4,5].map(m=>`<label><input type="checkbox" value="${m}" ${sel.includes(m)?"checked":""}
         onchange="reSel()"><span><b>M${m}</b> · ${MN[m]}</span>
         <span class="mlvl">${RANKS[S.prog[String(m)]||0].split(" ")[0]} L${(S.prog[String(m)]||0)+1}</span></label>`).join("")}
     </div>
-    <button class="ghost" onclick="allMods()">Select all 5 (mixed run)</button>
-    <button class="primary" onclick="startRun()">▶ Start — 15 questions, ${RANKS[L]}</button>
-    <div class="small center" style="margin-top:8px">Questions ramp easy→hard each run and get harder every level.</div>
+    <button class="ghost" onclick="allMods()">Select all 5 (mixed)</button>
+    <button class="primary" onclick="run()">▶ Start — fresh 15 · ${RANKS[L]}</button>
   </div>
-  <div class="card small">Pass = <b>${PASS}/15</b> correct → level up (harder next time).
-    Levels are saved <b>per module</b>. <button class="ghost" onclick="resetAll()">Reset all progress</button></div>`;
+  <div class="card small">Pass <b>${PASS}/15</b> → rank up; next run pulls 15 you
+    haven't seen, harder. <button class="ghost" onclick="reset()">Reset all</button></div>`;
 }
 function reSel(){const s=[...document.querySelectorAll('#mods input:checked')].map(x=>+x.value);
   if(s.length){S.sel=s;save();home();}}
 function allMods(){S.sel=[1,2,3,4,5];save();home();}
-function resetAll(){if(confirm("Erase all progress?")){S=def();save();home();}}
+function reset(){if(confirm("Erase all progress?")){S=def();save();home();}}
 
-function startRun(){
+function run(){
   const sel=S.sel; if(!sel.length){alert("Pick a module");return}
-  const L=lvl(sel);
-  const today=new Date().toISOString().slice(0,10);
+  const L=lvl(sel), today=new Date().toISOString().slice(0,10);
   if(S.lastDay!==today){const y=new Date();y.setDate(y.getDate()-1);
     S.streak=(S.lastDay===y.toISOString().slice(0,10))?S.streak+1:1;S.lastDay=today;save();}
-  G={sel,L,pool:buildRun(sel,L),i:0,correct:0,combo:0,score:0,runBest:0};
+  const {pick,cycled}=buildRun(sel,L);
+  G={sel,L,pool:pick,cycled,i:0,correct:0,combo:0,score:0,best:0};
   ask();
 }
 function ask(){
@@ -224,49 +273,42 @@ function ask(){
     <div class="row" style="margin-top:10px"><span class="combo">🔥×${G.combo}</span>
       <span class="small">✔ ${G.correct} · need ${PASS}</span></div>
   </div>
-  <div class="card">
-    <div class="q">${it.q}</div>
+  <div class="card"><div class="q">${it.q}</div>
     <div id="opts">${opts.map((o,k)=>`<button class="opt" onclick="ans(${k})">${o.t}</button>`).join("")}</div>
-    <div id="post"></div>
-  </div>`;
+    <div id="post"></div></div>`;
 }
 function ans(k){
-  const {it,opts}=G.cur, right=opts[k].idx===it.a;
+  const{it,opts}=G.cur, right=opts[k].idx===it.a;
   [...document.querySelectorAll('#opts .opt')].forEach((b,idx)=>{b.disabled=true;
     if(opts[idx].idx===it.a)b.classList.add('correct');
     if(idx===k&&!right)b.classList.add('wrong');});
-  if(right){G.combo++;G.correct++;G.score+=10*it.d*G.combo;if(G.combo>G.runBest)G.runBest=G.combo;
-    if(G.combo>S.best){S.best=G.combo;save();}}
-  else G.combo=0;
+  if(right){G.combo++;G.correct++;G.score+=10*it.d*G.combo;if(G.combo>G.best)G.best=G.combo;
+    if(G.combo>S.best){S.best=G.combo;save();}} else G.combo=0;
   document.getElementById('post').innerHTML=
     `<div class="why"><b>${right?"✅ correct":"❌"}</b> — ${it.w}</div>
-     <button class="primary" onclick="nxt()">${G.i+1>=RUN?"See result":"Next ▶"}</button>`;
+     <button class="primary" onclick="nx()">${G.i+1>=RUN?"See result":"Next ▶"}</button>`;
 }
-function nxt(){ if(++G.i>=RUN) return result(); ask(); }
-function result(){
-  const passed=G.correct>=PASS, sel=G.sel, L=G.L;
-  let msg="", action="";
-  if(passed && L<MAXLVL){ setLvl(sel,L+1);
-    msg=`🎉 <b>RANK UP → ${RANKS[L+1]}</b><br>Harder questions next run.`; }
-  else if(passed && L===MAXLVL){
-    msg=`🏆 <b>MODULE MASTERED at ${RANKS[L]}!</b>`;
-    if(sel.length===1){ const nextM=sel[0]+1;
-      if(MN[nextM]){ action=`<button class="primary" onclick="goNext(${nextM})">➡ Next: M${nextM} ${MN[nextM]} (start 🟢 Student)</button>`;
-        msg+=`<br>Ready for Module ${nextM}.`; }
-      else msg+="<br>That's the last built module — more coming."; }
-  } else {
-    msg=`Need <b>${PASS}/15</b> to rank up — you got ${G.correct}. Same level, try again (it shuffles).`; }
+function nx(){ if(++G.i>=RUN) return res(); ask(); }
+function res(){
+  const pass=G.correct>=PASS, sel=G.sel, L=G.L; let msg="",act="";
+  if(pass&&L<MAXLVL){ setLvl(sel,L+1);
+    msg=`🎉 <b>RANK UP → ${RANKS[L+1]}</b><br>Next run = a different, harder 15.`; }
+  else if(pass&&L===MAXLVL){ msg=`🏆 <b>MODULE MASTERED (${RANKS[L]})!</b>`;
+    if(sel.length===1){ const n=sel[0]+1;
+      if(MN[n]){ act=`<button class="primary" onclick="goNext(${n})">➡ Next: M${n} ${MN[n]} (start 🟢)</button>`;
+        msg+=`<br>Ready for Module ${n}.`; } else msg+="<br>Last built module — more coming."; } }
+  else msg=`Need <b>${PASS}/15</b> to rank up — got ${G.correct}. Same level; next try is a fresh 15.`;
   app.innerHTML=`
   <div class="card center">
-    <div class="big">${passed?"✅ Passed":"🔁 Keep going"}</div>
-    <div>${G.correct}/15 correct · score ${G.score} · 🔥 best ${G.runBest}</div>
+    <div class="big">${pass?"✅ Passed":"🔁 Keep going"}</div>
+    <div>${G.correct}/15 · score ${G.score} · 🔥 ${G.best}${G.cycled?' · ↻ bank cycled':''}</div>
     <div class="why" style="text-align:left;margin-top:12px">${msg}</div>
-    ${action}
-    <button class="primary" onclick="startRun()">Play again (${RANKS[lvl(sel)]})</button>
+    ${act}
+    <button class="primary" onclick="run()">Play again (${RANKS[lvl(sel)]})</button>
     <button class="ghost" onclick="home()">Home / change modules</button>
   </div>`;
 }
-function goNext(m){ S.sel=[m]; save(); home(); }
+function goNext(m){S.sel=[m];save();home();}
 home();
 </script>
 </body>
