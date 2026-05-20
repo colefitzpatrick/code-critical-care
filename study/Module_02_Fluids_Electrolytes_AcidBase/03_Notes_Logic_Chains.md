@@ -41,17 +41,42 @@ Ionized **Ca²⁺** stabilizes nerve/muscle membranes
 **→ Hypocalcemia** → nerves hyper-excitable → tingling, **tetany**, **Trousseau/Chvostek
 signs**, laryngospasm, seizures → *airway risk*
 **→ Hypercalcemia** → sluggish nerves/muscles → "stones, bones, groans, moans"
-**→ Magnesium** tracks with K⁺; low Mg²⁺ → refractory low K⁺ + **torsades**
-**→ nurse action:** hypocalcemia = airway + seizure precautions, give calcium; check Mg²⁺
-alongside any K⁺ problem. (Link: Mod 01 — membrane stability is an electrical-gradient story.)
+### Why magnesium matters — and why it's tied to potassium
+**Magnesium** does THREE jobs that link it to K⁺ and to membrane stability:
+1. **Cofactor for the Na⁺/K⁺-ATPase pump.** The pump (Mod 01) is what *holds K⁺ inside cells*. It can't work without Mg²⁺. **No Mg → the pump weakens → K⁺ leaks OUT of cells** (drops serum K⁺ over time as the kidney then loses it).
+2. **Caps the kidney's K⁺-leak channel ("ROMK").** Normally Mg²⁺ plugs a K⁺-exit channel in the renal tubule. **Low Mg → cap is off → K⁺ wastes into urine.** You will not be able to keep K⁺ replaced until you replace Mg first.
+3. **Membrane stabilizer** (like Ca²⁺). Low Mg → hyper-excitable nerves/muscles → tremors, seizures, and **torsades de pointes** (a specific lethal twisting VT classically caused by low K⁺ AND low Mg²⁺).
+
+**→ "Why low Mg keeps K⁺ low":** TWO simultaneous leaks — the pump can't push K⁺ into cells (job 1) AND the kidney channel is leaking K⁺ out (job 2). Pouring K⁺ in without fixing Mg is like filling a tub with the drain open. **Replace Mg first, then K⁺ sticks.**
+
+**→ nurse action:** hypocalcemia = airway + seizure precautions, give calcium. **With ANY K⁺ problem, ALWAYS check Mg²⁺** — that's the gatekeeper rule. (Link: Mod 01 — membrane stability is an electrical-gradient story.)
 
 ## Chain 5 — The bicarbonate buffer = instant pH defense (engineering core)
-Metabolism makes acid nonstop. The buffer absorbs it *immediately*:
+The buffer reaction (memorize this):
 `CO₂ + H₂O ⇌ H₂CO₃ ⇌ H⁺ + HCO₃⁻`
-**→** add H⁺ → reaction shifts left → CO₂ rises → lungs blow it off (Le Chatelier!)
-**→** Henderson–Hasselbalch (concept): **pH ∝ HCO₃⁻ (base) / PaCO₂ (acid)**
-**→ why it matters:** every acid–base problem = the base term or the acid term moved.
-That's the entire framework — you already own the chemistry.
+
+Engineering view: **pH = log(base/acid)**. The **base** is **HCO₃⁻** (kidney/metabolic, slow controller). The **acid** is **PaCO₂** (lungs/respiratory, fast controller). *Anything that changes that ratio changes pH.* There are exactly four ways to move the ratio — that's the entire framework:
+
+| Trigger | Equilibrium shift | HCO₃⁻ | PaCO₂ | pH | Name |
+|---|---|---|---|---|---|
+| Add H⁺ (DKA, lactate) | LEFT — H⁺ + HCO₃⁻ → CO₂ + H₂O; CO₂ blown off | ↓ (**consumed**) | ↓ (compensation) | ↓ | metabolic acidosis |
+| Lose H⁺ (vomiting / acid loss) | RIGHT — equilibrium replaces H⁺; HCO₃⁻ accumulates | ↑ | ↑ (compensation) | ↑ | metabolic alkalosis |
+| ↑ CO₂ (hypoventilation) | RIGHT — more CO₂ pushes toward H⁺ + HCO₃⁻ | normal acute | ↑ | ↓ | respiratory acidosis |
+| ↓ CO₂ (hyperventilation) | LEFT — less CO₂ pulls H⁺ + HCO₃⁻ back to CO₂ | normal acute | ↓ | ↑ | respiratory alkalosis |
+
+### ⭐ Your DKA / lactate question — **why HCO₃⁻ falls**
+The ketoacids (DKA) or lactic acid (shock) **dump H⁺ into the blood**. The buffer immediately eats that H⁺ by combining: **H⁺ + HCO₃⁻ → H₂CO₃ → CO₂ + H₂O**. The CO₂ is blown off by faster breathing (Kussmaul).
+
+> **HCO₃⁻ falls because it gets CONSUMED buffering the acid — NOT because the kidney excretes it.** The kidney is actually trying to *make more* HCO₃⁻ to keep up; in acute DKA the acid is produced faster than the kidney can regenerate. *(That's why "low HCO₃⁻" appears on the lab — used up, not dumped.)*
+
+### ⭐ Your direction question — what shifts it the OTHER way (toward more basic)?
+"More H⁺ shifts toward CO₂" — yes, the buffer eats H⁺ by making CO₂ + water, and CO₂ goes out the lungs. To shift the OTHER way (less H⁺ → more basic):
+- **Add HCO₃⁻** (kidney retains more, or IV bicarb, or you LOSE acid via vomiting) → ratio ↑ → **pH ↑** (metabolic alkalosis).
+- **Remove CO₂** (hyperventilate) → ratio ↑ → **pH ↑** (respiratory alkalosis).
+
+Either of those raises the **HCO₃⁻ / PaCO₂** ratio → pH up → more basic. Acidosis = ratio drops; alkalosis = ratio rises. That's it.
+
+**→ why it matters:** every acid–base problem = the base term (HCO₃⁻) or the acid term (PaCO₂) moved. Treat the cause; the lab follows.
 
 ## Chain 6 — The 4 disorders + compensation (ROME)
 **ROME:** **R**espiratory = pH & CO₂ move **O**pposite ways · **M**etabolic = pH & HCO₃⁻
@@ -66,17 +91,51 @@ move **E**qual ways.
 Respiratory problem → kidneys compensate (slow, days). Metabolic → lungs compensate
 (fast, minutes: e.g., **Kussmaul breathing** blowing off CO₂ in DKA).
 
-## Chain 7 — The 5-step ABG algorithm (do this like an engineer)
-Normals: **pH 7.35–7.45 · PaCO₂ 35–45 · HCO₃⁻ 22–26 · anion gap 8–12**
-1. **pH:** <7.35 acidemia, >7.45 alkalemia (which side of the set point?)
-2. **PaCO₂:** abnormal & explains the pH? → respiratory component
-3. **HCO₃⁻:** abnormal & explains the pH? → metabolic component
-4. **Compensating?** the non-primary value shifting the same way pH "wants" = compensation
-5. **If metabolic acidosis:** compute **anion gap** — high (lactate/DKA/toxin) vs normal
-   (diarrhea/renal)
-**→ nurse action:** an ABG is a decision tool — interpret it, connect to the patient,
-escalate. Shock patient + metabolic acidosis + high lactate = the Module 01 spiral; the
-fix is restoring perfusion, not chasing the number.
+## Chain 7 — The 5-step ABG algorithm (engineer it)
+Normals to memorize: **pH 7.35–7.45 · PaCO₂ 35–45 · HCO₃⁻ 22–26 · anion gap 8–12 · Na⁺ 135–145 · Cl⁻ 98–107**
+
+### ⭐ What an anion gap IS (you need this for step 5)
+**Formula:** `AG = Na⁺ − (Cl⁻ + HCO₃⁻)`. Normal ≈ 8–12.
+
+Plain English: blood is electrically neutral — positives = negatives. We measure Na⁺ (+) and Cl⁻ + HCO₃⁻ (−); the leftover negative charge is the "gap" (mostly albumin and small things we don't measure). In metabolic acidosis the AG tells you WHICH kind:
+- **HIGH AG metabolic acidosis** — an *acid with an unmeasured anion* was added (lactate, ketones, salicylate, methanol). The acid donates H⁺ (which consumes HCO₃⁻), and the anion stays behind → AG goes up. *Mnemonic:* **MUDPILES**.
+- **NORMAL AG metabolic acidosis** — **HCO₃⁻ was lost directly** (diarrhea, renal tubular acidosis). To keep blood electrically neutral, **Cl⁻ rises 1-for-1** as HCO₃⁻ falls → both are measured → gap stays normal.
+
+*(Engineering view: AG only rises when a NEW anion shows up. A pure Cl⁻ ↔ HCO₃⁻ swap doesn't change it.)*
+
+### The 5 steps
+1. **pH:** <7.35 acidemia · >7.45 alkalemia.
+2. **PaCO₂:** if abnormal, does its direction *explain* the pH? (high CO₂ would push pH down; low CO₂ would push pH up) → if YES, that's the **respiratory** primary; if NO, this value is **compensating**.
+3. **HCO₃⁻:** if abnormal, does its direction *explain* the pH? → **metabolic** primary, or compensating.
+4. **Compensation?** The value that *doesn't* explain pH but is shifting toward "fixing" it = compensation. Lungs fast (minutes), kidneys slow (days). Compensation never overshoots.
+5. **If metabolic acidosis →** compute **AG**. High = added acid. Normal = lost HCO₃⁻.
+
+### ⭐ Full worked example — DKA
+**Patient:** 23 yo, fruity breath, confused, RR 32 (Kussmaul), glucose 540, ketones positive.
+**Labs:** pH 7.18 · PaCO₂ 22 · HCO₃⁻ 9 · Na⁺ 138 · Cl⁻ 101 · K⁺ 5.4
+
+**Step 1 — pH:** 7.18 < 7.35 → **acidemia**. ✓
+**Step 2 — PaCO₂ 22 is LOW.** Low CO₂ would push pH UP (alkalosis direction). That does NOT explain the acidemia → so PaCO₂ is *compensating*, not primary.
+**Step 3 — HCO₃⁻ 9 is LOW.** Low HCO₃⁻ pushes pH DOWN. ✓ This explains the acidemia → **primary = metabolic acidosis** (pH↓ + HCO₃⁻↓ both equal direction = ROME's "Metabolic Equal").
+**Step 4 — Compensation appropriate?** Yes — lungs are hyperventilating (Kussmaul) → blowing off CO₂ → trying to raise pH back. *(Engineer check: Winter's formula says expected PaCO₂ ≈ 1.5 × HCO₃⁻ + 8 = 1.5(9)+8 = 21.5 ± 2; actual 22. ✓)*
+**Step 5 — Anion gap:** `AG = 138 − (101 + 9) = 28`. Normal is 8–12 → **HIGH gap**. Cause = an added acid (ketones, confirmed by labs).
+
+**Diagnosis:** **High-anion-gap metabolic acidosis with appropriate respiratory compensation, from DKA.**
+
+**Why HCO₃⁻ is 9 specifically:** ketoacids dumped H⁺ into the blood → buffer consumed HCO₃⁻ (H⁺ + HCO₃⁻ → CO₂ + H₂O) → lungs blew off the CO₂. The bicarb is *used up*, not excreted.
+
+**Nurse actions:**
+- IV **isotonic fluids** (rehydrate + improve perfusion).
+- **Insulin per protocol** — fixes the upstream cause (no insulin → ketogenesis).
+- **Watch K⁺ obsessively** — it will crash as insulin drives K⁺ into cells (Mod 01 link); replace early.
+- Treat the precipitant (missed dose? infection?); hourly mental status, glucose, ABG, lytes.
+- **Do NOT chase the bicarb number with sodium bicarb infusion** — treat the cause; HCO₃⁻ normalizes when the acid stops being produced.
+
+### ⭐ Quick contrast — diarrhea (different cause, same family)
+**Labs:** pH 7.30 · PaCO₂ 30 · HCO₃⁻ 14 · Na⁺ 136 · Cl⁻ 113.
+`AG = 136 − (113 + 14) = 9` → **NORMAL gap**. Still metabolic acidosis, but the cause is **HCO₃⁻ lost in stool**, with Cl⁻ swapping in to fill the balance → AG unchanged. Treat the diarrhea + fluids.
+
+**→ nurse action:** an ABG + AG is a decision tool. Match the pattern to the cause — the AG tells you whether to look for an **acid** (high gap) or for a **HCO₃⁻ leak** (normal gap). Shock + lactic acidosis = Module 01 spiral; fix perfusion, not the number.
 
 ---
 
