@@ -81,16 +81,20 @@ const MODS=[
  {k:"Module_02_Fluids_Electrolytes_AcidBase",n:"M2 · Fluids·Lytes·Acid–Base"},
  {k:"Module_03_Cardiovascular_Physiology",n:"M3 · Cardiovascular Physiology"},
  {k:"Module_04_Cardiovascular_Pathophysiology",n:"M4 · Cardiovascular Patho"},
- {k:"Module_05_Respiratory_Physiology_GasExchange",n:"M5 · Respiratory & Gas Exchange"}];
+ {k:"Module_05_Respiratory_Physiology_GasExchange",n:"M5 · Respiratory & Gas Exchange"},
+ {k:"_REFERENCE",n:"📋 Quick Reference (numbers + fishbones)"}];
 const BASE=["00_START_HERE","01_Big_Picture","02_Concept_Map","03_Notes_Logic_Chains",
  "04_Recall_Sets","05_Clinical_Reasoning","06_Spaced_Review"];
-function filesFor(i){let f=BASE.slice(); if(i>=3) f.push("07_NCLEX_and_Nursing_Actions");
-  f.push("_GLOSSARY"); return f;}
+function filesFor(i){
+  if(MODS[i].k==="_REFERENCE") return ["Key_Numbers"];
+  let f=BASE.slice(); if(i>=3) f.push("07_NCLEX_and_Nursing_Actions");
+  f.push("_GLOSSARY"); return f;
+}
 const PRETTY={ "00_START_HERE":"Start Here","01_Big_Picture":"Big Picture",
  "02_Concept_Map":"Concept Map","03_Notes_Logic_Chains":"Logic Chains",
  "04_Recall_Sets":"Recall Sets","05_Clinical_Reasoning":"Clinical Reasoning",
  "06_Spaced_Review":"Spaced Review","07_NCLEX_and_Nursing_Actions":"NCLEX & Nursing",
- "_GLOSSARY":"Glossary"};
+ "_GLOSSARY":"Glossary","Key_Numbers":"Numbers & Fishbones"};
 
 const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 function inline(s){
