@@ -1,9 +1,53 @@
-# Quick Reference — Numbers to Know Cold
+# Quick Reference — Numbers & Fishbones
 
-> Memorize these. They're what every ABSN exam, NCLEX item, and ICU report sheet runs on.
-> Fishbones below are the **lab shorthand** used on whiteboards and in SBAR everywhere.
+> **Realistic calibration.** ICU/CCRN nurses do NOT memorize all of these. They know
+> a **core ~20 cold**, ballpark another ~20, and **look up the rest** — that's standard
+> of care, not a knowledge gap.
+>
+> - 🔴 **Cold** — permanent. Drives action every shift. (The Core 20 below.)
+> - 🟡 **Ballpark** — know the range + clinical meaning; act on extremes.
+> - 🔵 **Look up** — never trust memory: check the chart / lab / protocol.
 
 ---
+
+## ⭐ THE CORE 20 — own these permanently (🔴)
+
+Cover the right column. If you can recite these from a blank page, you have what every
+ICU nurse has cold on day one. *The other 50+ numbers below are useful but not where
+you start.*
+
+| # | Number | Value | Why it matters |
+|---|---|---|---|
+| 1 | HR | 60–100 · act <50 or >120 | Tachycardia = compensation / arrhythmia risk |
+| 2 | RR | 12–20 | Trend > value; <10 = sedation/opioid danger |
+| 3 | BP / SBP | <120/<80 · SBP <90 = shock workup | Perfusion gauge |
+| 4 | **MAP target (ICU)** | **≥ 65 mmHg** | Below this = vasopressors |
+| 5 | SpO₂ | ≥95% (88–92% in COPD) | <90% = act |
+| 6 | Temp | 36.5–37.5 °C | <36 or >38 = SIRS criterion |
+| 7 | **pH** | **7.35–7.45** | Side of normal = direction |
+| 8 | **PaCO₂** | **35–45 mmHg** | Lung side of acid-base |
+| 9 | **HCO₃⁻** | **22–26 mEq/L** | Kidney side of acid-base |
+| 10 | Anion gap | 8–12 | High = added acid (DKA/lactate) |
+| 11 | Na⁺ | 135–145 | <125 or >155 → neuro precautions |
+| 12 | **K⁺** | **3.5–5.0** · call <2.5 or >6.0 | Sets RMP — cardiac gold |
+| 13 | Ca²⁺ total | 8.5–10.5 | Low → tetany/airway |
+| 14 | Mg²⁺ | 1.7–2.2 | Low → refractory K⁺ + torsades — always check with K⁺ |
+| 15 | Glucose | 70–100 fasting · <70 hypo · >250 DKA workup | — |
+| 16 | Lactate | <2 · **≥4 severe** | Cellular O₂ starvation |
+| 17 | **UOP** | **≥ 0.5 mL/kg/hr** | Free perfusion gauge |
+| 18 | GCS | 3–15 · **≤8 = intubate** | Airway protection threshold |
+| 19 | **Sepsis Hour-1** | **L · C · A · F · V** | Lactate · Cultures · Antibiotics · Fluids 30 mL/kg · Vasopressors if MAP<65 |
+| 20 | CPR | 2–2.4 in deep · 100–120/min · 30:2 | ACLS basics |
+
+**Why these 20?** They drive every shift — the call to the provider, the next nursing
+action, the priority on a 4-patient assignment. Everything below is valuable context
+but not the *trigger*.
+
+---
+
+# Full reference (the other ~50, by section)
+
+> 🔴 cold · 🟡 ballpark · 🔵 look up
 
 ## 🫀 Vital signs — adult
 
