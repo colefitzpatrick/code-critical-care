@@ -420,13 +420,86 @@ const Q=[
 {m:5,d:3,q:"Pneumonia treatment guidance:",o:["Antibiotic random","Cultures THEN broad-spectrum antibiotics; narrow with culture results","Steroid first","Diuretic"],a:1,w:"Hour-1 like."},
 {m:5,d:3,q:"Respiratory acidosis worsens K⁺ how?",o:["Lowers","H⁺ in, K⁺ out → hyperkalemia (link M2)","No effect","Doubles"],a:1,w:"Watch K⁺."},
 {m:5,d:3,q:"CO poisoning pitfall:",o:["SpO₂ obvious low","SpO₂ normal/false; need co-oximetry — treat with 100% O₂ ± hyperbaric","Brady","Random"],a:1,w:"Anemic hypoxia."},
-{m:5,d:3,q:"Why is prone positioning used in severe ARDS?",o:["Comfort","Improves V/Q matching + recruits posterior alveoli → better oxygenation","Random","Cosmetic"],a:1,w:"Per protocol."}
+{m:5,d:3,q:"Why is prone positioning used in severe ARDS?",o:["Comfort","Improves V/Q matching + recruits posterior alveoli → better oxygenation","Random","Cosmetic"],a:1,w:"Per protocol."},
+
+/* ===== MODULE 6: Respiratory Pathophysiology + Vent Intro ===== */
+{m:6,d:1,q:"ARDS primarily causes which failure mode?",o:["Obstruction","Shunt","Dead space","Drive"],a:1,w:"Flooded alveoli, perfused but not ventilated."},
+{m:6,d:1,q:"PE primarily causes which failure mode?",o:["Obstruction","Shunt","Dead space","Drive"],a:2,w:"Clot blocks perfusion."},
+{m:6,d:1,q:"COPD primarily causes:",o:["Obstruction","Shunt","Dead space","Drive"],a:0,w:"Narrowed airways."},
+{m:6,d:1,q:"Opioid OD causes which failure?",o:["Obstruction","Shunt","Dead space","Drive (CO₂ retention)"],a:3,w:"Blunts respiratory drive."},
+{m:6,d:1,q:"FiO₂ =",o:["Force","Fraction of inspired O₂","Final O₂","Free O₂"],a:1,w:"0.21=room air."},
+{m:6,d:1,q:"PEEP =",o:["Peak","Positive end-expiratory pressure","Plateau","Pressure"],a:1,w:"Keeps alveoli open."},
+{m:6,d:1,q:"Tidal volume =",o:["Total lung","Air per breath","Reserve","Dead space"],a:1,w:"Lung-protective ~6 mL/kg IBW."},
+{m:6,d:1,q:"Asthma triad:",o:["Bronchospasm + inflammation + mucus","HTN+DM+obesity","Cough+fever+chills","Edema+JVD+crackles"],a:0,w:"All three need treatment."},
+{m:6,d:1,q:"COPD components:",o:["Asthma only","Emphysema + chronic bronchitis","Pneumonia","CF"],a:1,w:"Obstructive."},
+{m:6,d:1,q:"Tripod position suggests:",o:["Comfort","Respiratory distress (accessory muscles)","Sleep","Random"],a:1,w:"↑Work of breathing."},
+{m:6,d:1,q:"Atelectasis =",o:["Infection","Collapsed alveoli","Asthma","Edema"],a:1,w:"Prevent w/ deep breaths."},
+{m:6,d:1,q:"Incentive spirometer use:",o:["Lowers BP","Prevents atelectasis","Gives O₂","Suctions"],a:1,w:"~10×/hr awake."},
+{m:6,d:1,q:"Pursed-lip breathing:",o:["Speeds exhale","Slows exhale; prevents airway collapse","Raises CO₂","Lowers O₂"],a:1,w:"COPD technique."},
+{m:6,d:1,q:"BiPAP delivers:",o:["One pressure","Two pressures (insp + exp); non-invasive vent","No pressure","O₂ only"],a:1,w:"COPD/CHF NIV."},
+{m:6,d:1,q:"CPAP delivers:",o:["One continuous pressure","Two pressures","Just O₂","Suction"],a:0,w:"OSA, splints airway."},
+{m:6,d:1,q:"Silent chest in asthma means:",o:["Good","No air moving — near-arrest","Sleep","Resolved"],a:1,w:"Critical — intubate."},
+{m:6,d:1,q:"Tension pneumothorax: trachea deviates:",o:["Toward side","AWAY from side","Stays mid","Down"],a:1,w:"Pressure pushes away."},
+{m:6,d:1,q:"Smoking cessation is:",o:["Optional","#1 high-yield teaching for resp patients","Annual","Random"],a:1,w:"Slows decline."},
+{m:6,d:1,q:"Type 1 respiratory failure:",o:["High CO₂","Low O₂ (oxygenation)","Normal","Low HR"],a:1,w:"ARDS/pneumonia/PE."},
+{m:6,d:1,q:"Type 2 respiratory failure:",o:["Low O₂ only","High CO₂ (ventilation)","Normal","Low Na"],a:1,w:"COPD/opioid OD."},
+{m:6,d:1,q:"Acute resp distress priority:",o:["Document","Airway/Breathing first — act + stay","Labs","Reassess later"],a:1,w:"ABC."},
+{m:6,d:1,q:"Non-rebreather mask is for:",o:["Mild","Emergency / severe hypoxia (~60–95%)","Eating","Sleep"],a:1,w:"High FiO₂."},
+{m:6,d:1,q:"Naloxone reverses:",o:["BP","Opioid respiratory depression (restores drive)","Bleeding","Fever"],a:1,w:"Type 2 OD."},
+{m:6,d:1,q:"Capnography/EtCO₂ measures:",o:["O₂","Exhaled CO₂; catches hypoventilation early","BP","K"],a:1,w:"Real-time ventilation."},
+{m:6,d:2,q:"Asthma inhaler order:",o:["Steroid then rescue","Rescue (bronchodilator) THEN steroid; rinse after","Steroid only","No order"],a:1,w:"Open airways first."},
+{m:6,d:2,q:"COPD chronic retainer + O₂:",o:["Withhold","Titrate to ~88–92%, watch CO₂/drowsy","Always 15L","O₂ toxic"],a:1,w:"Don't withhold; don't blast."},
+{m:6,d:2,q:"ARDS refractory hypoxemia is from:",o:["Dead space","Widespread shunt (flooded alveoli)","High pH","Brady"],a:1,w:"PEEP/vent, not just FiO₂."},
+{m:6,d:2,q:"PE classic presentation:",o:["Slow ache","Sudden dyspnea + tachy + ↓O₂ + clear lungs + pleuritic pain","Brady","Edema"],a:1,w:"Dead space picture."},
+{m:6,d:2,q:"PE diagnostic test of choice (stable):",o:["X-ray","CT pulmonary angiography (CTPA)","ECG","BNP"],a:1,w:"Wells → D-dimer → CTPA."},
+{m:6,d:2,q:"Tension pneumothorax emergency action:",o:["Wait","Needle decompression then chest tube","Diuretic","Antibiotic"],a:1,w:"Time-critical."},
+{m:6,d:2,q:"Chest tube continuous bubbling water-seal:",o:["Normal","Possible air leak — assess + report","Clamp","Pull tube"],a:1,w:"Tidaling normal."},
+{m:6,d:2,q:"Suctioning safety:",o:["30 sec passes","Hyperoxygenate, ≤10–15 sec/pass, monitor SpO₂/HR","No O₂","Push fluids"],a:1,w:"Avoid hypoxia."},
+{m:6,d:2,q:"DOPE acronym (vent troubleshooting):",o:["Drugs","Displaced, Obstruction, Pneumothorax, Equipment","Diet","DKA"],a:1,w:"Sudden deterioration."},
+{m:6,d:2,q:"VAP prevention bundle:",o:["Lay flat","HOB ≥30°, oral care, daily sedation interruption + SBT, DVT+ulcer prophylaxis","Antibiotics daily","Suction q1h"],a:1,w:"Four pillars."},
+{m:6,d:2,q:"Lung-protective Vt in ARDS:",o:["10–12 mL/kg","~6 mL/kg ideal body weight + PEEP","15 mL/kg","Random"],a:1,w:"Mortality benefit."},
+{m:6,d:2,q:"Permissive hypercapnia means:",o:["Avoid CO₂","Accept higher PaCO₂ to protect lungs","Low CO₂","Treat aggressively"],a:1,w:"ARDS strategy."},
+{m:6,d:2,q:"Magnesium IV in severe asthma:",o:["No role","Smooth-muscle relaxant adjunct","First-line","Replace K"],a:1,w:"Severe attacks."},
+{m:6,d:2,q:"COPD exacerbation — NIV choice:",o:["CPAP only","BiPAP first (mortality benefit)","Intubate immediately","O₂ only"],a:1,w:"Try before intubation."},
+{m:6,d:2,q:"Inhaled steroid teaching:",o:["Use during attack","Daily controller; rinse mouth after","Stop when better","Push fluids"],a:1,w:"Prevent thrush."},
+{m:6,d:2,q:"Ipratropium is:",o:["Steroid","Anticholinergic bronchodilator (combine w/ β₂ in COPD)","Mucolytic","β-blocker"],a:1,w:"Different mechanism."},
+{m:6,d:2,q:"TB isolation:",o:["Contact","Airborne (N95, negative pressure)","Droplet","Standard"],a:1,w:"Airborne."},
+{m:6,d:2,q:"Chest tube — never:",o:["Below chest","Routinely clamp","Monitor drainage","Occlusive if dislodged"],a:1,w:"Tension pneumo risk."},
+{m:6,d:2,q:"Pneumonia: order matters:",o:["Antibiotics then culture","Cultures BEFORE first antibiotic","No cultures","Steroid first"],a:1,w:"ID the bug."},
+{m:6,d:2,q:"Vent weaning readiness:",o:["FiO₂ 100%","Improving cause, awake, low FiO₂/PEEP, stable HD","Random","Max sedation"],a:1,w:"Then SBT."},
+{m:6,d:2,q:"OSA treatment:",o:["Caffeine","CPAP + weight loss","No tx","Antibiotic"],a:1,w:"Splints airway."},
+{m:6,d:2,q:"Theophylline level:",o:["Wide therapeutic","Narrow therapeutic — monitor toxicity","No level","Stat only"],a:1,w:"Rare today."},
+{m:6,d:2,q:"Hypoventilation ABG:",o:["Resp alkalosis","Resp acidosis (CO₂↑ pH↓)","Met alkalosis","No change"],a:1,w:"M2 link."},
+{m:6,d:2,q:"Refractory low SpO₂ on high O₂:",o:["↑O₂ recheck later","Escalate (shunt — needs PEEP/vent)","Document","Stop O₂"],a:1,w:"FiO₂ alone won't fix."},
+{m:6,d:3,q:"Status asthmaticus with silent chest:",o:["Continue nebs only","Emergency — prepare to intubate; continuous nebs, IV steroid, IV Mg","Wait 1h","Diuretic"],a:1,w:"Near-arrest."},
+{m:6,d:3,q:"Drowsy COPD on 6L NC, SpO₂ 96%:",o:["Add more O₂","Titrate DOWN to target ~88–92%; get ABG","Lay flat","Diuretic"],a:1,w:"Over-O₂ → CO₂ narcosis."},
+{m:6,d:3,q:"Sepsis + bilateral infiltrates + SpO₂ 84% on NRB:",o:["Pneumonia only","ARDS likely — intubate, lung-protective vent, treat sepsis","Wait","Allergy"],a:1,w:"Sepsis #1 cause."},
+{m:6,d:3,q:"Massive PE with hemodynamic instability:",o:["Anticoag only","Consider thrombolytics + ICU","Aspirin","Discharge"],a:1,w:"Lytics for unstable."},
+{m:6,d:3,q:"Post-op day 2: sudden dyspnea, sharp pain, clear lungs:",o:["Pneumonia","PE — anticoag pathway","Asthma","Anxiety"],a:1,w:"DVT risk."},
+{m:6,d:3,q:"Vented patient: peak pressures rising, sats falling:",o:["↑FiO₂ only","DOPE check: Displaced, Obstruction, Pneumothorax, Equipment; bag if needed","Wait","Sedate more"],a:1,w:"Systematic."},
+{m:6,d:3,q:"Tension pneumothorax 3 hallmarks:",o:["Bilateral wheeze","Tracheal deviation AWAY, absent breath sounds, hypotension","Fever","Brady"],a:1,w:"Needle decompression."},
+{m:6,d:3,q:"Cardiogenic vs non-cardiogenic pulmonary edema:",o:["Same","Cardiogenic = pump fail (HF); non-cardiogenic = ARDS (leaky alveoli)","Both ARDS","Both HF"],a:1,w:"Different mechanism."},
+{m:6,d:3,q:"Prone positioning in ARDS:",o:["Comfort","Improves V/Q + recruits posterior alveoli (oxygenation)","Random","Cosmetic"],a:1,w:"Severe ARDS protocol."},
+{m:6,d:3,q:"ARDS Berlin criteria (simplified):",o:["Single","Acute + bilateral infiltrates + not cardiac + low PaO₂/FiO₂","Just hypoxia","Just dyspnea"],a:1,w:"All required."},
+{m:6,d:3,q:"Why cultures BEFORE antibiotics?",o:["Convenience","Antibiotics blur cultures — can't ID bug or narrow therapy","Random","Cheaper"],a:1,w:"Stewardship + outcomes."},
+{m:6,d:3,q:"CURB-65 is for:",o:["Asthma","Pneumonia severity / admission","Sepsis","COPD"],a:1,w:"Confusion, Urea↑, RR≥30, BP low, ≥65 yr."},
+{m:6,d:3,q:"Aspiration pneumonia high-risk groups:",o:["Healthy adults","Stroke, dysphagia, ↓LOC, GERD, post-op","Athletes","Children only"],a:1,w:"Swallow assess."},
+{m:6,d:3,q:"Why low Vt (6 mL/kg IBW) in ARDS?",o:["Easier","Prevents volutrauma in injured alveoli; mortality benefit","Cheaper","Random"],a:1,w:"Landmark trial."},
+{m:6,d:3,q:"BiPAP vs CPAP:",o:["Same","BiPAP = 2 pressures; CPAP = 1 continuous","CPAP intubation needed","BiPAP invasive"],a:1,w:"BiPAP supports ventilation more."},
+{m:6,d:3,q:"Wells score is for:",o:["Asthma","PE pre-test probability","HF","Pneumonia"],a:1,w:"Guides workup."},
+{m:6,d:3,q:"D-dimer use:",o:["Confirms PE","Sensitive not specific — rules OUT in low-risk patients","Specific","Random"],a:1,w:"Workup tool."},
+{m:6,d:3,q:"CO poisoning pitfall:",o:["SpO₂ obviously low","SpO₂ falsely normal — need co-oximetry; treat 100% O₂ ± hyperbaric","Brady","Random"],a:1,w:"Anemic hypoxia."},
+{m:6,d:3,q:"Why is hypoxia harder to fix in shunt vs V/Q mismatch?",o:["Same","Shunt blood bypasses ventilated alveoli entirely — extra O₂ can't reach it","Easier","No difference"],a:1,w:"Needs PEEP recruitment."},
+{m:6,d:3,q:"Vent weaning — SBT means:",o:["Random","Spontaneous Breathing Trial — minimal vent support to test readiness","Sedation","Cardiac test"],a:1,w:"Pass → extubate."},
+{m:6,d:3,q:"Chest tube — sudden cessation of drainage + worsening symptoms:",o:["Healing","Possible obstruction/clot — assess, alert; tension risk","Wait","Pull tube"],a:1,w:"Could re-tension."},
+{m:6,d:3,q:"Flail chest:",o:["Stable","Paradoxical chest movement; pain control + O₂; may need vent","Cold","Brady"],a:1,w:"Multiple rib fxs."},
+{m:6,d:3,q:"Resp acidosis worsens K⁺ how (link M2)?",o:["Lowers","H⁺ in, K⁺ out → hyperK","No effect","Doubles"],a:1,w:"Watch K⁺ in resp failure."}
 ];
 Q.forEach((q,i)=>q.id=i);
 
 const RANKS=["🟢 Student","🔵 New Grad RN","🟣 ICU RN","🟠 Rapid Response","🔴 Resus Lead"];
-const MN={1:"Homeostasis & the Cell",2:"Fluids · Lytes · Acid–Base",3:"Cardiovascular Physiology",4:"Cardiovascular Patho",5:"Respiratory & Gas Exchange"};
-const RUN=15, PASS=11, MAXLVL=4, KEY="codecc_v4";
+const MN={1:"Homeostasis & the Cell",2:"Fluids · Lytes · Acid–Base",3:"Cardiovascular Physiology",4:"Cardiovascular Patho",5:"Respiratory & Gas Exchange",6:"Respiratory Patho + Vent"};
+const RUN=15, PASS=11, MAXLVL=4, KEY="codecc_v5";
 let S=load();
 function def(){return{prog:{},seen:{},last:{},best:0,streak:0,lastDay:"",sel:[1]}}
 function load(){try{return Object.assign(def(),JSON.parse(localStorage.getItem(KEY)))}catch(e){return def()}}
@@ -462,7 +535,7 @@ function buildRun(sel,level){
 function home(){
   const sel=S.sel,L=lvl(sel);
   const counts={};
-  [1,2,3,4,5].forEach(m=>counts[m]=Q.filter(q=>q.m===m).length);
+  [1,2,3,4,5,6].forEach(m=>counts[m]=Q.filter(q=>q.m===m).length);
   app.innerHTML=`
   <div class="card">
     <div class="row"><span class="badge">${RANKS[L]}</span>
@@ -474,7 +547,7 @@ function home(){
   <div class="card">
     <b>Pick module(s)</b> <span class="small">— each has its own level</span>
     <div class="mods" id="mods">
-      ${[1,2,3,4,5].map(m=>`<label><input type="checkbox" value="${m}" ${sel.includes(m)?"checked":""}
+      ${[1,2,3,4,5,6].map(m=>`<label><input type="checkbox" value="${m}" ${sel.includes(m)?"checked":""}
         onchange="reSel()"><span><b>M${m}</b> · ${MN[m]}<br><span class="small">${counts[m]} Q</span></span>
         <span class="mlvl">${RANKS[S.prog[String(m)]||0].split(" ")[0]} L${(S.prog[String(m)]||0)+1}</span></label>`).join("")}
     </div>
@@ -486,7 +559,7 @@ function home(){
 }
 function reSel(){const s=[...document.querySelectorAll('#mods input:checked')].map(x=>+x.value);
   if(s.length){S.sel=s;save();home();}}
-function allMods(){S.sel=[1,2,3,4,5];save();home();}
+function allMods(){S.sel=[1,2,3,4,5,6];save();home();}
 function reset(){if(confirm("Erase all progress?")){S=def();save();home();}}
 
 function run(){
