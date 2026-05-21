@@ -493,13 +493,82 @@ const Q=[
 {m:6,d:3,q:"Vent weaning — SBT means:",o:["Random","Spontaneous Breathing Trial — minimal vent support to test readiness","Sedation","Cardiac test"],a:1,w:"Pass → extubate."},
 {m:6,d:3,q:"Chest tube — sudden cessation of drainage + worsening symptoms:",o:["Healing","Possible obstruction/clot — assess, alert; tension risk","Wait","Pull tube"],a:1,w:"Could re-tension."},
 {m:6,d:3,q:"Flail chest:",o:["Stable","Paradoxical chest movement; pain control + O₂; may need vent","Cold","Brady"],a:1,w:"Multiple rib fxs."},
-{m:6,d:3,q:"Resp acidosis worsens K⁺ how (link M2)?",o:["Lowers","H⁺ in, K⁺ out → hyperK","No effect","Doubles"],a:1,w:"Watch K⁺ in resp failure."}
+{m:6,d:3,q:"Resp acidosis worsens K⁺ how (link M2)?",o:["Lowers","H⁺ in, K⁺ out → hyperK","No effect","Doubles"],a:1,w:"Watch K⁺ in resp failure."},
+
+/* ===== MODULE 7: Renal + AKI / CKD / CRRT ===== */
+{m:7,d:1,q:"'A WET BED' (kidney jobs) does NOT include:",o:["Acid-base","BP control","Making insulin","Electrolytes"],a:2,w:"Pancreas makes insulin."},
+{m:7,d:1,q:"GFR depends on:",o:["Lung function","Blood flow/pressure to the kidney","K⁺ level","Liver"],a:1,w:"Pressure-driven filtration."},
+{m:7,d:1,q:"Urine output minimum (perfusion gauge):",o:["≥0.1 mL/kg/hr","≥0.5 mL/kg/hr","≥2 mL/kg/hr","No min"],a:1,w:"Oliguria <0.5."},
+{m:7,d:1,q:"Most common AKI type:",o:["Pre-renal (low flow)","Intrinsic","Post-renal","None"],a:0,w:"Hypoperfusion."},
+{m:7,d:1,q:"ATN =",o:["Acute tubular necrosis","Acute toxic nephritis","Atrial node","None"],a:0,w:"Tubule cell death."},
+{m:7,d:1,q:"Post-renal AKI =",o:["Low flow","Tissue damage","Obstruction (stones/BPH/tumor)","Infection"],a:2,w:"Relieve blockage."},
+{m:7,d:1,q:"Kidney hormone for red cells:",o:["Insulin","EPO (erythropoietin)","Cortisol","TSH"],a:1,w:"Low EPO → CKD anemia."},
+{m:7,d:1,q:"AEIOU lists indications for:",o:["Surgery","Dialysis","Antibiotics","Intubation"],a:1,w:"Acidosis/Electrolytes/Intox/Overload/Uremia."},
+{m:7,d:1,q:"CRRT is:",o:["Fast intermittent dialysis","Slow continuous dialysis for unstable ICU pts","Surgery","A drug"],a:1,w:"Hemodynamically gentle."},
+{m:7,d:1,q:"AV fistula arm — NEVER:",o:["Wash it","Take BP / draw blood / start IV in it","Look at it","Feel it"],a:1,w:"Protect the access."},
+{m:7,d:1,q:"Check fistula patency by:",o:["X-ray","Feel the thrill + hear the bruit","BP cuff","Pulse ox"],a:1,w:"No thrill = clotted = emergency."},
+{m:7,d:1,q:"Top cause of CKD:",o:["Diabetes","Asthma","Trauma","Anemia"],a:0,w:"Then hypertension."},
+{m:7,d:1,q:"Failed kidney — the killer electrolyte:",o:["Na⁺","K⁺ (hyperkalemia)","Cl⁻","Mg²⁺"],a:1,w:"Cardiac arrest risk."},
+{m:7,d:1,q:"Nephron's 3 steps:",o:["Filter, reabsorb, secrete","Pump, store, release","Sense, decide, act","Inhale, hold, exhale"],a:0,w:"Glomerulus + tubules."},
+{m:7,d:1,q:"Oliguria means:",o:["No urine","Low urine output","High urine","Normal"],a:1,w:"<0.5 mL/kg/hr."},
+{m:7,d:1,q:"Best renal volume monitor:",o:["Temperature","Daily weight + strict I&O","HR only","SpO₂"],a:1,w:"1 L ≈ 1 kg."},
+{m:7,d:1,q:"RAAS is triggered by:",o:["High BP","Low blood flow/pressure","High K⁺","Cold"],a:1,w:"Renin → angiotensin II + aldosterone."},
+{m:7,d:1,q:"Phosphate binders are taken:",o:["Empty stomach","WITH meals","Bedtime only","IV"],a:1,w:"Bind dietary phosphate."},
+{m:7,d:1,q:"A nephrotoxin example:",o:["Acetaminophen","Contrast / NSAIDs / aminoglycosides","Vitamin C","Water"],a:1,w:"Damage tubules."},
+{m:7,d:1,q:"Uremia =",o:["Low urine","Toxic waste buildup (confusion, pericarditis)","High Ca","Anemia"],a:1,w:"Dialysis indication."},
+{m:7,d:1,q:"ESRD (Stage 5 CKD) GFR:",o:["<15","60-89","≥90","30-59"],a:0,w:"Dialysis/transplant."},
+{m:7,d:1,q:"Hemodialysis (HD) needs:",o:["Unstable BP","Relatively stable BP","No access","Ventilator"],a:1,w:"CRRT for unstable."},
+{m:7,d:2,q:"Pre-renal AKI BUN:Cr ratio:",o:[">20:1","10:1","<5:1","Normal"],a:0,w:"Kidney avidly reabsorbing."},
+{m:7,d:2,q:"Pre-renal AKI treatment:",o:["Fluids / restore perfusion","Always dialysis","NSAIDs","Restrict all fluid"],a:0,w:"Fix flow before ATN."},
+{m:7,d:2,q:"Fluids in an overloaded intrinsic AKI patient:",o:["Help","Flood them → pulmonary edema","No effect","Cure it"],a:1,w:"Match action to type."},
+{m:7,d:2,q:"Oliguric phase danger:",o:["Hypovolemia","Fluid overload + hyperK + acidosis","HypoK","Dehydration"],a:1,w:"Can't excrete."},
+{m:7,d:2,q:"Diuretic phase danger:",o:["Overload","Hypovolemia + HYPOkalemia","HyperK","Acidosis"],a:1,w:"Worry flips."},
+{m:7,d:2,q:"Why acidosis worsens hyperkalemia:",o:["Unrelated","H⁺ into cells, K⁺ out","Acidosis excretes K","Buffer"],a:1,w:"Mod 2 swap."},
+{m:7,d:2,q:"Contrast dye + high Cr:",o:["Safe","Risk contrast AKI — hydrate, hold nephrotoxins","No concern","Give NSAIDs"],a:1,w:"Prevent."},
+{m:7,d:2,q:"In AKI, NSAIDs + ACE inhibitors should be:",o:["Increased","Held (worsen AKI)","Doubled","Given IV"],a:1,w:"Reduce injury."},
+{m:7,d:2,q:"Pick CRRT over HD when:",o:["Stable patient","Hemodynamically UNSTABLE ICU patient","At home","Mild AKI"],a:1,w:"Slow + gentle."},
+{m:7,d:2,q:"BP in a fistula patient:",o:["Either arm","NEVER the fistula arm","Always fistula arm","Leg only always"],a:1,w:"Protect access."},
+{m:7,d:2,q:"CKD complications:",o:["Anemia, bone disease, hyperK, acidosis, HTN","Only anemia","Only HTN","None"],a:0,w:"A WET BED all fail."},
+{m:7,d:2,q:"CKD anemia treatment:",o:["Transfusion only","EPO + iron","Aspirin","Diuretic"],a:1,w:"Replace the hormone."},
+{m:7,d:2,q:"Acute hyperK treatment order:",o:["Dialysis only","Stabilize (Ca) → shift (insulin/glucose, albuterol) → remove","Insulin only","Binder only"],a:1,w:"3 buckets."},
+{m:7,d:2,q:"Phosphate binder between meals:",o:["Correct","Ineffective — must be WITH food","Better","IV"],a:1,w:"Teaching trap."},
+{m:7,d:2,q:"CKD bone disease chain:",o:["High vit D","↓vit D → ↓Ca → ↑PTH + ↑phosphate → bone breakdown","High Ca","No bone effect"],a:1,w:"Mineral imbalance."},
+{m:7,d:2,q:"Missed dialysis session →",o:["Low K","K⁺ climbs (no exit route) → hyperK","Low BP only","Nothing"],a:1,w:"Mod 1 tank logic."},
+{m:7,d:2,q:"Renal diet limits:",o:["Protein only","Sodium, potassium, phosphorus, fluid","Just water","Just sugar"],a:1,w:"Per stage."},
+{m:7,d:2,q:"Loop diuretic in anuric ESRD:",o:["Works great","Won't work (no functioning nephrons)","Cures it","First-line"],a:1,w:"Need dialysis."},
+{m:7,d:2,q:"Fistula with no thrill/bruit:",o:["Normal","Clotted — emergency, notify","Healing","Mature"],a:1,w:"Access at risk."},
+{m:7,d:2,q:"Hydration around contrast:",o:["Comfort","Renal protection (prevent contrast AKI)","Hunger","BP"],a:1,w:"Flush the dye."},
+{m:7,d:2,q:"Vancomycin/gentamicin in renal impairment:",o:["No change","Monitor trough levels + renal function","Stop fluids","Give NSAIDs"],a:1,w:"Nephrotoxic, dose-related."},
+{m:7,d:2,q:"EPO over-correction risk:",o:["Anemia","Thrombosis/clots + HTN","Bleeding","Hypoglycemia"],a:1,w:"Target Hgb carefully."},
+{m:7,d:2,q:"BUN:Cr ~10-15:1 with muddy casts:",o:["Pre-renal","Intrinsic (ATN)","Post-renal","Normal"],a:1,w:"Tissue damage."},
+{m:7,d:2,q:"Daily weight ↑ 2-3 lb in dialysis patient:",o:["Normal","Report — fluid retention","Good","Ignore"],a:1,w:"Fluid status."},
+{m:7,d:3,q:"Septic pt, MAP 55, UOP 10 mL/2h, BUN:Cr 28:1:",o:["Intrinsic","Pre-renal — restore perfusion (Hour-1, pressors to MAP≥65)","Post-renal","Normal"],a:1,w:"Catch before ATN."},
+{m:7,d:3,q:"AKI pt now 4 L urine/day, K⁺ 3.0, BP dropping:",o:["Oliguric","Diuretic phase — replace fluids + K⁺, monitor","Recovery","Pre-renal"],a:1,w:"Worry flips to ↓vol/↓K."},
+{m:7,d:3,q:"Dialysis pt missed 2 sessions, K⁺ 6.9, peaked T:",o:["Oral binder, wait","Emergency: Ca → insulin/glucose+albuterol → urgent dialysis","Fluids","Diuretic"],a:1,w:"Stabilize/shift/remove."},
+{m:7,d:3,q:"Rhabdomyolysis → AKI because:",o:["Random","Myoglobin + released K⁺ injure tubules → ATN + hyperK","Low K","Infection"],a:1,w:"Aggressive fluids; watch K⁺."},
+{m:7,d:3,q:"Tumor lysis syndrome renal picture:",o:["Low K, high Ca","↑K, ↑phos, ↑uric acid, ↓Ca → AKI","Normal","Low phos"],a:1,w:"Cells dump contents."},
+{m:7,d:3,q:"Pre-renal vs ATN — key idea:",o:["Same","Pre-renal kidney still reabsorbs avidly (BUN:Cr>20, low urine Na); ATN can't","ATN reabsorbs more","No difference"],a:1,w:"Function vs damage."},
+{m:7,d:3,q:"Why CRRT over HD in septic shock:",o:["Cheaper","Slow continuous removal — unstable pt can't tolerate fast HD shifts","Faster","Home use"],a:1,w:"Hemodynamic tolerance."},
+{m:7,d:3,q:"Dialysis disequilibrium syndrome:",o:["Benign","Rapid solute removal → cerebral edema/headache/seizures (early runs)","Hyperkalemia","Infection"],a:1,w:"Slower initial dialysis."},
+{m:7,d:3,q:"Why urine output drops FIRST in shock:",o:["Bladder issue","Kidney is flow-driven; low MAP → low GFR before other signs","Random","Pain"],a:1,w:"Free perfusion gauge."},
+{m:7,d:3,q:"CKD: Hgb 8.5, Ca 7.8, Phos 6.5 — plan:",o:["Transfuse + ignore","EPO + iron; phosphate binders WITH meals; vit D/Ca mgmt","Diuretic only","NSAIDs"],a:1,w:"Multi-system CKD care."},
+{m:7,d:3,q:"Untreated pre-renal AKI becomes:",o:["Post-renal","Intrinsic (ATN) — tubular cells die from ischemia","Cured","CKD instantly"],a:1,w:"Mod 01 ATP starvation."},
+{m:7,d:3,q:"Why hold metformin around contrast/AKI:",o:["No reason","Lactic acidosis risk if renal function drops","Hypoglycemia","Allergy"],a:1,w:"Renally cleared."},
+{m:7,d:3,q:"ACE inhibitor + AKI + K⁺ 5.8:",o:["Increase ACE","Hold ACE (raises K⁺ + lowers GFR in low-flow); monitor","Add NSAID","Give K⁺"],a:1,w:"Two reasons to hold."},
+{m:7,d:3,q:"Post-renal AKI from BPH — first action:",o:["Fluids","Relieve obstruction (bladder catheter) → urine flows","Dialysis","NSAIDs"],a:1,w:"Fix flow-out."},
+{m:7,d:3,q:"Why does CKD cause metabolic acidosis:",o:["Lung failure","Kidney can't excrete H⁺ / regenerate HCO₃⁻","Too much O₂","Vomiting"],a:1,w:"'A' in A WET BED."},
+{m:7,d:3,q:"ESRD fluid overload, crackles, SpO₂ 88%:",o:["Lay flat","Sit up + O₂ + urgent dialysis/ultrafiltration","Push fluids","Walk"],a:1,w:"Pulmonary edema — airway first."},
+{m:7,d:3,q:"Why continuous ECG in renal failure:",o:["Habit","Hyperkalemia → lethal arrhythmia (RMP, Mod 1)","Lung check","BP only"],a:1,w:"K⁺ is the killer."},
+{m:7,d:3,q:"Why avoid LR/K⁺-containing fluids in hyperkalemic AKI:",o:["No reason","Adds K⁺ a failing kidney can't excrete","LR hypotonic","Cost"],a:1,w:"Choose fluid by K⁺ status."},
+{m:7,d:3,q:"UOP 0.2 mL/kg/hr × 3 h post-op:",o:["Normal","Oliguria — assess volume/perfusion/obstruction, notify","Diuresis","Ignore"],a:1,w:"Investigate AKI."},
+{m:7,d:3,q:"Why daily weight > I&O alone:",o:["Easier","Captures insensible losses + true fluid balance","Looks better","Faster"],a:1,w:"Gold-standard fluid trend."},
+{m:7,d:3,q:"Fistula arm cool, pale, painful:",o:["Normal","Possible steal syndrome/ischemia — assess, notify","Mature fistula","Just infection"],a:1,w:"Access complication."}
 ];
 Q.forEach((q,i)=>q.id=i);
 
 const RANKS=["🟢 Student","🔵 New Grad RN","🟣 ICU RN","🟠 Rapid Response","🔴 Resus Lead"];
-const MN={1:"Homeostasis & the Cell",2:"Fluids · Lytes · Acid–Base",3:"Cardiovascular Physiology",4:"Cardiovascular Patho",5:"Respiratory & Gas Exchange",6:"Respiratory Patho + Vent"};
-const RUN=15, PASS=11, MAXLVL=4, KEY="codecc_v5";
+const MN={1:"Homeostasis & the Cell",2:"Fluids · Lytes · Acid–Base",3:"Cardiovascular Physiology",4:"Cardiovascular Patho",5:"Respiratory & Gas Exchange",6:"Respiratory Patho + Vent",7:"Renal + AKI / CKD / CRRT"};
+const RUN=15, PASS=11, MAXLVL=4, KEY="codecc_v6";
 let S=load();
 function def(){return{prog:{},seen:{},last:{},best:0,streak:0,lastDay:"",sel:[1]}}
 function load(){try{return Object.assign(def(),JSON.parse(localStorage.getItem(KEY)))}catch(e){return def()}}
@@ -535,7 +604,7 @@ function buildRun(sel,level){
 function home(){
   const sel=S.sel,L=lvl(sel);
   const counts={};
-  [1,2,3,4,5,6].forEach(m=>counts[m]=Q.filter(q=>q.m===m).length);
+  [1,2,3,4,5,6,7].forEach(m=>counts[m]=Q.filter(q=>q.m===m).length);
   app.innerHTML=`
   <div class="card">
     <div class="row"><span class="badge">${RANKS[L]}</span>
@@ -547,7 +616,7 @@ function home(){
   <div class="card">
     <b>Pick module(s)</b> <span class="small">— each has its own level</span>
     <div class="mods" id="mods">
-      ${[1,2,3,4,5,6].map(m=>`<label><input type="checkbox" value="${m}" ${sel.includes(m)?"checked":""}
+      ${[1,2,3,4,5,6,7].map(m=>`<label><input type="checkbox" value="${m}" ${sel.includes(m)?"checked":""}
         onchange="reSel()"><span><b>M${m}</b> · ${MN[m]}<br><span class="small">${counts[m]} Q</span></span>
         <span class="mlvl">${RANKS[S.prog[String(m)]||0].split(" ")[0]} L${(S.prog[String(m)]||0)+1}</span></label>`).join("")}
     </div>
@@ -559,7 +628,7 @@ function home(){
 }
 function reSel(){const s=[...document.querySelectorAll('#mods input:checked')].map(x=>+x.value);
   if(s.length){S.sel=s;save();home();}}
-function allMods(){S.sel=[1,2,3,4,5,6];save();home();}
+function allMods(){S.sel=[1,2,3,4,5,6,7];save();home();}
 function reset(){if(confirm("Erase all progress?")){S=def();save();home();}}
 
 function run(){
