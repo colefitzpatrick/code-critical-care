@@ -562,13 +562,79 @@ const Q=[
 {m:7,d:3,q:"Why avoid LR/K⁺-containing fluids in hyperkalemic AKI:",o:["No reason","Adds K⁺ a failing kidney can't excrete","LR hypotonic","Cost"],a:1,w:"Choose fluid by K⁺ status."},
 {m:7,d:3,q:"UOP 0.2 mL/kg/hr × 3 h post-op:",o:["Normal","Oliguria — assess volume/perfusion/obstruction, notify","Diuresis","Ignore"],a:1,w:"Investigate AKI."},
 {m:7,d:3,q:"Why daily weight > I&O alone:",o:["Easier","Captures insensible losses + true fluid balance","Looks better","Faster"],a:1,w:"Gold-standard fluid trend."},
-{m:7,d:3,q:"Fistula arm cool, pale, painful:",o:["Normal","Possible steal syndrome/ischemia — assess, notify","Mature fistula","Just infection"],a:1,w:"Access complication."}
+{m:7,d:3,q:"Fistula arm cool, pale, painful:",o:["Normal","Possible steal syndrome/ischemia — assess, notify","Mature fistula","Just infection"],a:1,w:"Access complication."},
+
+/* ===== MODULE 8: Neuro — ICP, Stroke, Seizures ===== */
+{m:8,d:1,q:"CPP =",o:["MAP + ICP","MAP − ICP","ICP − MAP","HR × SV"],a:1,w:"Net brain perfusion pressure."},
+{m:8,d:1,q:"Normal ICP:",o:["7–15 mmHg","20–30","40–50","0–5"],a:0,w:"Treat >20."},
+{m:8,d:1,q:"Monro-Kellie box holds:",o:["Brain, blood, CSF","Brain only","Air, blood, bone","Muscle, fat, fluid"],a:0,w:"Fixed skull volume."},
+{m:8,d:1,q:"Earliest sign of rising ICP:",o:["Cushing's triad","Change in LOC","Blown pupil","Seizure"],a:1,w:"Most sensitive."},
+{m:8,d:1,q:"GCS threshold to intubate:",o:["≤12","≤8","≤3","≤14"],a:1,w:"Can't protect airway."},
+{m:8,d:1,q:"FAST screens for:",o:["Sepsis","Stroke","MI","Seizure"],a:1,w:"Face, Arm, Speech, Time."},
+{m:8,d:1,q:"Which stroke can get tPA?",o:["Hemorrhagic","Ischemic","Both","Neither"],a:1,w:"Clot — dissolve it."},
+{m:8,d:1,q:"Cushing's triad =",o:["↓BP, ↑HR, fast breathing","↑SBP/wide pulse pressure, bradycardia, irregular breathing","Fever, cough","Normal vitals"],a:1,w:"LATE ↑ICP."},
+{m:8,d:1,q:"During a seizure you should:",o:["Restrain the patient","Side-lying, protect head, don't restrain","Put a spoon in mouth","Hold them down"],a:1,w:"Safety + airway."},
+{m:8,d:1,q:"Status epilepticus is:",o:["Brief seizure","Seizure >5 min or repeated without recovery — emergency","Normal","Post-ictal"],a:1,w:"Benzos."},
+{m:8,d:1,q:"CO₂ effect on cerebral vessels:",o:["Constricts","Dilates → ↑ICP","No effect","Freezes"],a:1,w:"Avoid hypercapnia."},
+{m:8,d:1,q:"Mannitol / 3% saline for ↑ICP works by:",o:["Adding water","Osmotically pulling water OUT of the brain","Cooling","Sedation"],a:1,w:"Osmosis (Mod 1)."},
+{m:8,d:1,q:"HOB position for ↑ICP:",o:["Flat","30° + head midline","Trendelenburg","Prone"],a:1,w:"Venous drainage."},
+{m:8,d:1,q:"Altered mental status — always check:",o:["Cholesterol","Glucose","INR","TSH"],a:1,w:"Reversible mimic."},
+{m:8,d:1,q:"SIADH does what to sodium?",o:["Raises","Lowers (retains water)","No effect","Removes"],a:1,w:"Cerebral edema risk."},
+{m:8,d:1,q:"DI (diabetes insipidus) does what to sodium?",o:["Lowers","Raises (loses water)","No effect","Doubles"],a:1,w:"High urine output."},
+{m:8,d:1,q:"Post-ictal state =",o:["Pre-seizure aura","Confused/sleepy recovery after a seizure","Normal","Coma always"],a:1,w:"Reorient, protect."},
+{m:8,d:1,q:"tPA is a:",o:["Sedative","Clot-dissolving thrombolytic","Diuretic","Steroid"],a:1,w:"Ischemic stroke."},
+{m:8,d:1,q:"Why is the brain so ischemia-vulnerable?",o:["It's small","No fuel/O₂ reserve — depends second-to-second on flow","Too much fat","It's protected"],a:1,w:"Zero buffer."},
+{m:8,d:1,q:"A 'blown' (fixed dilated) pupil suggests:",o:["Normal","Herniation / severe ↑ICP","Seizure","Stroke recovery"],a:1,w:"Emergency."},
+{m:8,d:1,q:"First-line drug for active status epilepticus:",o:["Phenytoin","Benzodiazepine (lorazepam)","Mannitol","tPA"],a:1,w:"Then antiepileptic."},
+{m:8,d:1,q:"Desmopressin (DDAVP) treats:",o:["SIADH","DI (replaces ADH)","Seizure","Stroke"],a:1,w:"Stops water loss."},
+{m:8,d:2,q:"CPP target:",o:["≥30","≥60","≥100","≥10"],a:1,w:"Below = ischemia."},
+{m:8,d:2,q:"Cushing's triad is:",o:["Early ↑ICP","LATE ↑ICP (herniation near)","Shock","Normal"],a:1,w:"Ominous."},
+{m:8,d:2,q:"Why is Cushing's triad confusing vs shock?",o:["Same vitals","Cushing's = ↑BP + ↓HR; shock = ↓BP + ↑HR (opposite)","Both ↓BP","Both ↑HR"],a:1,w:"Brainstem reflex."},
+{m:8,d:2,q:"tPA window (from last-known-well):",o:["~24 h","~3–4.5 h","~1 week","No limit"],a:1,w:"Time = brain."},
+{m:8,d:2,q:"Before giving tPA you MUST:",o:["Give fluids","Rule out hemorrhage with CT","Wait a day","Lower glucose"],a:1,w:"No tPA into a bleed."},
+{m:8,d:2,q:"Hemorrhagic stroke + tPA:",o:["Give it","NEVER — worsens the bleed","Half dose","Only if young"],a:1,w:"Control BP, reverse anticoag."},
+{m:8,d:2,q:"After a stroke, oral intake:",o:["Start immediately","NPO until swallow screen (aspiration risk)","Only liquids","Force fluids"],a:1,w:"Dysphagia common."},
+{m:8,d:2,q:"Why HOB 30° + midline in ↑ICP?",o:["Comfort","Promotes venous drainage → ↓ICP","Feeding","Random"],a:1,w:"Avoid neck kinks too."},
+{m:8,d:2,q:"Why does high CO₂ raise ICP?",o:["Random","CO₂ dilates cerebral vessels → ↑cerebral blood volume","Cools brain","Lowers MAP"],a:1,w:"Keep normocapnia."},
+{m:8,d:2,q:"Status epilepticus drug sequence:",o:["Antiepileptic then benzo","Benzo first → then antiepileptic (levetiracetam/phenytoin)","Mannitol","tPA"],a:1,w:"Stop it fast."},
+{m:8,d:2,q:"SIADH vs DI urine output:",o:["Both high","SIADH low urine (retain); DI high urine (dump)","Both low","Same"],a:1,w:"Opposite."},
+{m:8,d:2,q:"Last-known-well time matters because:",o:["Billing","Determines tPA eligibility","Comfort","Diet"],a:1,w:"Window-based."},
+{m:8,d:2,q:"TIA is:",o:["A completed stroke","Temporary deficit that resolves — warning sign","A seizure","A bleed"],a:1,w:"Workup to prevent stroke."},
+{m:8,d:2,q:"Why avoid hyponatremia in brain injury?",o:["No reason","Low Na⁺ → water into brain cells → cerebral edema","Raises BP","Lowers HR"],a:1,w:"Mod 2 osmosis."},
+{m:8,d:2,q:"Fever in ↑ICP patient:",o:["Helpful","Raises brain metabolic demand — treat it","No effect","Lowers ICP"],a:1,w:"Normothermia."},
+{m:8,d:2,q:"Phenytoin monitoring:",o:["None","Drug levels; gingival hyperplasia; many interactions","Glucose","INR"],a:1,w:"Narrow range."},
+{m:8,d:2,q:"Nimodipine is used to:",o:["Stop seizures","Prevent vasospasm after subarachnoid hemorrhage","Lower ICP","Reverse ADH"],a:1,w:"Watch hypotension."},
+{m:8,d:2,q:"Cluster nursing care in ↑ICP because:",o:["Efficiency","Repeated stimulation spikes ICP — minimize/space it","Comfort","Random"],a:1,w:"Avoid spikes."},
+{m:8,d:2,q:"tPA BP requirement:",o:["Any BP","Must be controlled <185/110","Higher is fine","<90/60"],a:1,w:"Bleeding risk."},
+{m:8,d:2,q:"Why check glucose first in 'stroke-like' symptoms?",o:["Random","Hypoglycemia mimics stroke and is instantly reversible","Diet","Billing"],a:1,w:"Don't miss it."},
+{m:8,d:2,q:"Seizure precautions at bedside:",o:["Restraints","Bed low, padded rails, suction + O₂ ready, nothing in mouth","Bright lights","Flat bed only"],a:1,w:"Safety setup."},
+{m:8,d:2,q:"Decerebrate vs decorticate posturing:",o:["Same","Both signal severe brain injury (decerebrate = worse, extension)","Normal","Seizure types"],a:1,w:"Ominous neuro signs."},
+{m:8,d:2,q:"After the seizure (post-ictal) priorities:",o:["Restrain","O₂, suction, side-lying, reorient, assess injuries","Feed immediately","Ambulate"],a:1,w:"Recovery care."},
+{m:8,d:3,q:"TBI: BP 188/72, HR 46, irregular breathing, blown pupil:",o:["Shock — give fluids fast","Cushing's triad/herniation — emergency: notify NSGY, hyperosmolar, airway, HOB 30°","Anxiety","Normal post-op"],a:1,w:"Don't treat like routine HTN."},
+{m:8,d:3,q:"Warfarin patient, severe headache, vomiting, drowsy:",o:["Migraine","Likely hemorrhagic stroke — STAT CT, reverse anticoag, NO tPA","Give tPA","Discharge"],a:1,w:"Bleed picture."},
+{m:8,d:3,q:"Generalized seizure now 6 min, not stopping:",o:["Wait it out","Status — IV benzo, O₂, check glucose, protect airway","Restrain","tPA"],a:1,w:"Emergency."},
+{m:8,d:3,q:"Post-craniotomy: urine 600 mL/hr, Na⁺ 158, thirsty:",o:["SIADH","DI — replace fluids, anticipate desmopressin, correct slowly","Normal","Overhydrated"],a:1,w:"ADH loss."},
+{m:8,d:3,q:"Why is rising ICP a positive-feedback spiral?",o:["It self-corrects","↑ICP → ↓CPP → ischemia → more edema → ↑ICP","Random","It lowers MAP only"],a:1,w:"Break it externally (Mod 1 Ch7)."},
+{m:8,d:3,q:"Why not aggressively hyperventilate ↑ICP patients routinely?",o:["No reason","Excessive ↓CO₂ over-constricts vessels → cerebral ischemia; aim normocapnia","It's always good","Raises ICP"],a:1,w:"Balance."},
+{m:8,d:3,q:"Ischemic stroke BP management early:",o:["Lower aggressively always","Often permissive HTN (unless giving tPA, then <185/110)","Raise BP","Ignore BP"],a:1,w:"Perfuse the penumbra."},
+{m:8,d:3,q:"Subarachnoid hemorrhage — classic complaint + drug:",o:["Mild ache; aspirin","'Worst headache of my life'; nimodipine prevents vasospasm","No symptoms","Cough; steroid"],a:1,w:"Thunderclap headache."},
+{m:8,d:3,q:"Mannitol administration — monitor:",o:["Glucose only","Serum osmolality, Na⁺, volume/urine output","INR","TSH"],a:1,w:"Osmotic diuresis."},
+{m:8,d:3,q:"Why correct SIADH/DI sodium slowly?",o:["No reason","Rapid Na⁺ shifts cause brain injury (demyelination / cerebral edema)","Cost","Faster is fine"],a:1,w:"Mod 2 rule."},
+{m:8,d:3,q:"tPA absolute contraindication:",o:["Age >50","Recent intracranial hemorrhage / bleed on CT / recent major surgery","Diabetes","HTN history"],a:1,w:"Bleeding risk."},
+{m:8,d:3,q:"Meningitis bedside signs:",o:["FAST","Nuchal rigidity + Kernig/Brudzinski signs + fever + headache","Cushing's","Wheeze"],a:1,w:"Meningeal irritation."},
+{m:8,d:3,q:"EVD (external ventricular drain) purpose:",o:["Feed patient","Drain CSF to lower ICP + measure it","Give meds","Suction airway"],a:1,w:"Removes volume from the box."},
+{m:8,d:3,q:"A stroke patient suddenly can't be aroused, one pupil dilating:",o:["Sleeping","Herniation — emergency, notify, airway, hyperosmolar","Post-ictal","Normal"],a:1,w:"Time-critical."},
+{m:8,d:3,q:"Why is 'last-known-well' more accurate than 'symptom discovery'?",o:["Same","Deficits may have started earlier (e.g., on waking) — affects tPA window","Billing","Comfort"],a:1,w:"Eligibility precision."},
+{m:8,d:3,q:"Neuro patient with low Na⁺ + low urine + concentrated urine:",o:["DI","SIADH — fluid restriction, careful Na⁺ correction","Dehydration","Normal"],a:1,w:"Retaining water."},
+{m:8,d:3,q:"Why HOB elevation can be a balance in ↑ICP + low BP?",o:["No conflict","Too high HOB can lower MAP/CPP — balance ICP drainage vs perfusion","Always flat","Always 90°"],a:1,w:"CPP = MAP − ICP."},
+{m:8,d:3,q:"Glucose 38 presenting as slurred speech + weakness:",o:["Stroke — call tPA","Hypoglycemia mimicking stroke — treat glucose first","Seizure","Ignore"],a:1,w:"Reversible mimic."},
+{m:8,d:3,q:"Spinal cord injury — neurogenic shock pattern:",o:["↑HR, ↑BP","Hypotension + BRADYcardia + warm skin (lost sympathetic tone)","Fever","Normal"],a:1,w:"Distinct from hypovolemic shock."}
 ];
 Q.forEach((q,i)=>q.id=i);
 
 const RANKS=["🟢 Student","🔵 New Grad RN","🟣 ICU RN","🟠 Rapid Response","🔴 Resus Lead"];
-const MN={1:"Homeostasis & the Cell",2:"Fluids · Lytes · Acid–Base",3:"Cardiovascular Physiology",4:"Cardiovascular Patho",5:"Respiratory & Gas Exchange",6:"Respiratory Patho + Vent",7:"Renal + AKI / CKD / CRRT"};
-const RUN=15, PASS=11, MAXLVL=4, KEY="codecc_v6";
+const MN={1:"Homeostasis & the Cell",2:"Fluids · Lytes · Acid–Base",3:"Cardiovascular Physiology",4:"Cardiovascular Patho",5:"Respiratory & Gas Exchange",6:"Respiratory Patho + Vent",7:"Renal + AKI / CKD / CRRT",8:"Neuro: ICP / Stroke / Seizures"};
+const RUN=15, PASS=11, MAXLVL=4, KEY="codecc_v7";
 let S=load();
 function def(){return{prog:{},seen:{},last:{},best:0,streak:0,lastDay:"",sel:[1]}}
 function load(){try{return Object.assign(def(),JSON.parse(localStorage.getItem(KEY)))}catch(e){return def()}}
@@ -604,7 +670,7 @@ function buildRun(sel,level){
 function home(){
   const sel=S.sel,L=lvl(sel);
   const counts={};
-  [1,2,3,4,5,6,7].forEach(m=>counts[m]=Q.filter(q=>q.m===m).length);
+  [1,2,3,4,5,6,7,8].forEach(m=>counts[m]=Q.filter(q=>q.m===m).length);
   app.innerHTML=`
   <div class="card">
     <div class="row"><span class="badge">${RANKS[L]}</span>
@@ -616,7 +682,7 @@ function home(){
   <div class="card">
     <b>Pick module(s)</b> <span class="small">— each has its own level</span>
     <div class="mods" id="mods">
-      ${[1,2,3,4,5,6,7].map(m=>`<label><input type="checkbox" value="${m}" ${sel.includes(m)?"checked":""}
+      ${[1,2,3,4,5,6,7,8].map(m=>`<label><input type="checkbox" value="${m}" ${sel.includes(m)?"checked":""}
         onchange="reSel()"><span><b>M${m}</b> · ${MN[m]}<br><span class="small">${counts[m]} Q</span></span>
         <span class="mlvl">${RANKS[S.prog[String(m)]||0].split(" ")[0]} L${(S.prog[String(m)]||0)+1}</span></label>`).join("")}
     </div>
@@ -628,7 +694,7 @@ function home(){
 }
 function reSel(){const s=[...document.querySelectorAll('#mods input:checked')].map(x=>+x.value);
   if(s.length){S.sel=s;save();home();}}
-function allMods(){S.sel=[1,2,3,4,5,6,7];save();home();}
+function allMods(){S.sel=[1,2,3,4,5,6,7,8];save();home();}
 function reset(){if(confirm("Erase all progress?")){S=def();save();home();}}
 
 function run(){
