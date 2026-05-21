@@ -628,13 +628,146 @@ const Q=[
 {m:8,d:3,q:"Neuro patient with low Na⁺ + low urine + concentrated urine:",o:["DI","SIADH — fluid restriction, careful Na⁺ correction","Dehydration","Normal"],a:1,w:"Retaining water."},
 {m:8,d:3,q:"Why HOB elevation can be a balance in ↑ICP + low BP?",o:["No conflict","Too high HOB can lower MAP/CPP — balance ICP drainage vs perfusion","Always flat","Always 90°"],a:1,w:"CPP = MAP − ICP."},
 {m:8,d:3,q:"Glucose 38 presenting as slurred speech + weakness:",o:["Stroke — call tPA","Hypoglycemia mimicking stroke — treat glucose first","Seizure","Ignore"],a:1,w:"Reversible mimic."},
-{m:8,d:3,q:"Spinal cord injury — neurogenic shock pattern:",o:["↑HR, ↑BP","Hypotension + BRADYcardia + warm skin (lost sympathetic tone)","Fever","Normal"],a:1,w:"Distinct from hypovolemic shock."}
+{m:8,d:3,q:"Spinal cord injury — neurogenic shock pattern:",o:["↑HR, ↑BP","Hypotension + BRADYcardia + warm skin (lost sympathetic tone)","Fever","Normal"],a:1,w:"Distinct from hypovolemic shock."},
+
+/* ===== MODULE 9: Endocrine ===== */
+{m:9,d:1,q:"Insulin's job:",o:["Raises glucose","Moves glucose INTO cells (and K⁺ in)","Removes Na","Makes bile"],a:1,w:"Key into the cell."},
+{m:9,d:1,q:"DKA occurs in:",o:["Type 2","Type 1 (no insulin → ketoacids)","Neither","Both equally"],a:1,w:"High-anion-gap acidosis."},
+{m:9,d:1,q:"HHS features:",o:["Ketones, low glucose","Type 2, glucose >600, hyperosmolar, NO ketones","Acidosis","Type 1"],a:1,w:"Profound dehydration."},
+{m:9,d:1,q:"Hypoglycemia cutoff:",o:["<70","<140","<200","<40 only"],a:0,w:"Treat fast."},
+{m:9,d:1,q:"High TSH means the thyroid is:",o:["Overactive","Underactive (hypothyroid)","Normal","Removed"],a:1,w:"Pituitary pushing a lazy gland."},
+{m:9,d:1,q:"Thyroid storm is a crisis of:",o:["Hypothyroid","Hyperthyroid","Adrenal","Pituitary"],a:1,w:"Fever, tachy, agitation."},
+{m:9,d:1,q:"Myxedema coma is a crisis of:",o:["Hyperthyroid","Hypothyroid (hypothermia, ↓LOC)","Adrenal","Diabetes"],a:1,w:"Everything slow."},
+{m:9,d:1,q:"Cushing's =",o:["Too little cortisol","Too much cortisol","Too much insulin","Low Na"],a:1,w:"Moon face, ↑glucose."},
+{m:9,d:1,q:"Addison's =",o:["Too much cortisol","Adrenal insufficiency (low cortisol)","Hyperthyroid","SIADH"],a:1,w:"↓BP, ↓Na, ↑K."},
+{m:9,d:1,q:"Adrenal crisis emergency drug:",o:["Insulin","IV hydrocortisone + fluids","Levothyroxine","Lactulose"],a:1,w:"Cortisol collapse."},
+{m:9,d:1,q:"SIADH does what to Na⁺?",o:["Raises","Lowers (retains water)","No effect","Removes K"],a:1,w:"Dilutional."},
+{m:9,d:1,q:"DI does what to Na⁺?",o:["Lowers","Raises (loses water, huge urine)","No effect","Same as SIADH"],a:1,w:"Thirst."},
+{m:9,d:1,q:"Steroids should:",o:["Be stopped abruptly when better","NEVER be stopped abruptly (adrenal crisis)","Be doubled randomly","Skipped when sick"],a:1,w:"Taper."},
+{m:9,d:1,q:"A1c diabetic threshold:",o:["≥5.0%","≥6.5%","≥10%","≥4%"],a:1,w:"3-month average."},
+{m:9,d:1,q:"Hypoglycemia 'rule of 15':",o:["15 g carbs, recheck in 15 min","15 units insulin","Wait 15 h","15 mL water"],a:0,w:"Repeat if still low."},
+{m:9,d:2,q:"DKA/HHS treatment order:",o:["Insulin then nothing","Isotonic fluids + insulin; watch K⁺ obsessively","Bicarb first","Oral fluids"],a:1,w:"K⁺ crashes with insulin."},
+{m:9,d:2,q:"Hypoglycemia, not awake, no IV:",o:["Oral juice","Glucagon IM","Wait","Insulin"],a:1,w:"D50 if IV available."},
+{m:9,d:2,q:"Thyroid storm treatment:",o:["Warm + thyroid hormone","Cool + beta-blocker + antithyroid","Insulin","Lactulose"],a:1,w:"Slow it down."},
+{m:9,d:2,q:"Myxedema coma treatment:",o:["Cool + antithyroid","Thyroid hormone + warm + airway support","Insulin","Diuretic"],a:1,w:"Speed it up."},
+{m:9,d:2,q:"Cushing's labs:",o:["↓glucose, ↑K","↑glucose, ↓K, ↑Na, ↑BP","↓Na, ↑K","Normal"],a:1,w:"Cortisol excess."},
+{m:9,d:2,q:"Addison's labs:",o:["↑glucose, ↓K","↓glucose, ↓Na, ↑K, ↓BP","↑Na","Normal"],a:1,w:"Cortisol/aldosterone deficit."},
+{m:9,d:2,q:"SIADH management:",o:["Give water","Fluid restriction + slow Na⁺ correction","Desmopressin","Diuresis only"],a:1,w:"Too much water."},
+{m:9,d:2,q:"DI management:",o:["Fluid restriction","Replace fluids + desmopressin (DDAVP)","Insulin","Lactulose"],a:1,w:"Not enough ADH."},
+{m:9,d:2,q:"Levothyroxine teaching:",o:["At bedtime with food","Empty stomach, same time AM, lifelong","Only when tired","Stop when better"],a:1,w:"Absorption."},
+{m:9,d:2,q:"Methimazole/PTU warning:",o:["Weight gain","Agranulocytosis — report sore throat/fever","Hair growth","Low BP"],a:1,w:"Infection risk."},
+{m:9,d:2,q:"Insulin is classified as:",o:["Low-risk","High-alert med (double-check; don't abbreviate units)","OTC","Vitamin"],a:1,w:"Error-prone."},
+{m:9,d:2,q:"Why does no insulin cause hyperkalemia?",o:["Random","Without insulin, K⁺ stays out of cells + acidosis shifts more out","Kidney","Diet"],a:1,w:"Mod 1/2 link."},
+{m:9,d:2,q:"Why correct Na⁺ slowly in SIADH/DI?",o:["Cost","Rapid shift injures the brain (Mod 2)","Faster is fine","No reason"],a:1,w:"Demyelination/edema."},
+{m:9,d:2,q:"Diabetic sick-day rule:",o:["Stop insulin","Keep taking insulin, monitor glucose/ketones, hydrate","Skip meals","Double insulin"],a:1,w:"Illness raises glucose."},
+{m:9,d:2,q:"Pheochromocytoma classic sign:",o:["Low BP","Episodic severe hypertension + headache/sweating/palpitations","Bradycardia","Low glucose"],a:1,w:"Catecholamine tumor."},
+{m:9,d:3,q:"Type 1 DM, glucose 480, Kussmaul, fruity breath, K⁺ 5.4:",o:["HHS","DKA — fluids + insulin, watch K⁺, find precipitant","Hypoglycemia","Normal"],a:1,w:"Don't chase bicarb."},
+{m:9,d:3,q:"Glucose 38, confused, can't swallow safely:",o:["Oral juice","Glucagon IM (or D50 if IV); recheck in 15","Insulin","Wait"],a:1,w:"Treat fast."},
+{m:9,d:3,q:"Stopped prednisone abruptly: BP 78/40, glucose 50, Na 128, K 5.8:",o:["DKA","Adrenal crisis — IV hydrocortisone + fluids","Thyroid storm","SIADH"],a:1,w:"Cortisol collapse."},
+{m:9,d:3,q:"Post-craniotomy: Na 122, low concentrated urine:",o:["DI","SIADH — fluid restrict, slow Na correction","Dehydration","Normal"],a:1,w:"Too much ADH."},
+{m:9,d:3,q:"Post-pituitary surgery: urine 700 mL/hr, Na 158:",o:["SIADH","DI — replace fluids, desmopressin, correct slowly","Overload","Normal"],a:1,w:"ADH loss."},
+{m:9,d:3,q:"During DKA insulin therapy, K⁺ drops because:",o:["Excretion","Insulin drives K⁺ into cells","Dilution","Random"],a:1,w:"Replace early."},
+{m:9,d:3,q:"Why fluids before/with insulin in DKA?",o:["Comfort","Patient is profoundly dehydrated; restores perfusion + dilutes","Lowers K","Cosmetic"],a:1,w:"Volume first."},
+{m:9,d:3,q:"DKA vs HHS key difference:",o:["Same","DKA has ketones/acidosis (Type 1); HHS is hyperosmolar without significant ketones (Type 2)","HHS has ketones","DKA glucose higher"],a:1,w:"Mechanism differs."},
+{m:9,d:3,q:"Thyroid storm cardiac risk:",o:["Bradycardia","Tachyarrhythmia / high-output failure → beta-blocker","Low BP only","None"],a:1,w:"Rate control."},
+{m:9,d:3,q:"Why stress-dose steroids before surgery in chronic steroid users?",o:["No reason","Suppressed adrenals can't mount cortisol for stress → crisis risk","Lower glucose","Allergy"],a:1,w:"Prevent crisis."},
+{m:9,d:3,q:"Cushing's long-term complications:",o:["None","Osteoporosis, infection risk, hyperglycemia, HTN","Low BP","Bleeding"],a:1,w:"Cortisol excess effects."},
+{m:9,d:3,q:"Addison's patient + major stress without extra steroid:",o:["Fine","Risk adrenal crisis — needs stress dosing","Hyperthyroid","SIADH"],a:1,w:"Increase dose with stress."},
+{m:9,d:3,q:"Why is hypoglycemia more urgent than mild hyperglycemia?",o:["It isn't","Brain has no fuel reserve — fails fast (Mod 8)","Cost","Random"],a:1,w:"Treat immediately."},
+{m:9,d:3,q:"HHS first priority:",o:["Insulin alone","Aggressive isotonic fluids (severe dehydration) then insulin, watch K⁺","Bicarb","Oral fluids"],a:1,w:"Hyperosmolar volume deficit."},
+
+/* ===== MODULE 10: GI / Hepatic / Nutrition ===== */
+{m:10,d:1,q:"The liver does NOT:",o:["Detoxify (ammonia→urea)","Make clotting factors + albumin","Pump blood","Store glucose"],a:2,w:"Heart pumps."},
+{m:10,d:1,q:"Cirrhosis causes:",o:["Low BP only","Portal hypertension → varices, ascites, encephalopathy","Asthma","Diabetes"],a:1,w:"Scarred liver."},
+{m:10,d:1,q:"Esophageal varices are:",o:["Ulcers","Swollen fragile veins that can hemorrhage massively","Tumors","Normal"],a:1,w:"From portal HTN."},
+{m:10,d:1,q:"Hepatic encephalopathy is caused by:",o:["Low glucose","↑Ammonia (failed detox)","High Na","Infection only"],a:1,w:"Treat with lactulose."},
+{m:10,d:1,q:"Lactulose works by:",o:["Adding ammonia","Trapping ammonia in gut → excreted in stool","Stopping bleeding","Raising BP"],a:1,w:"Titrate to 2-3 stools/day."},
+{m:10,d:1,q:"Why do cirrhosis patients bleed?",o:["Too many platelets","Liver can't make clotting factors (↑INR)","High BP","Random"],a:1,w:"Coagulopathy."},
+{m:10,d:1,q:"Ascites is:",o:["Lung fluid","Fluid in the abdomen (portal HTN + low albumin)","Brain swelling","Blood clot"],a:1,w:"Paracentesis drains it."},
+{m:10,d:1,q:"GI bleed leads to which shock?",o:["Cardiogenic","Hypovolemic","Distributive","Obstructive"],a:1,w:"Blood loss."},
+{m:10,d:1,q:"Hematemesis =",o:["Black stool","Vomiting blood (upper GI bleed)","Bloody urine","Bruising"],a:1,w:"Melena = black tarry stool."},
+{m:10,d:1,q:"Pancreatitis key labs:",o:["↑Troponin","↑Lipase / amylase","↑TSH","↑Ammonia"],a:1,w:"Enzyme autodigestion."},
+{m:10,d:1,q:"Pancreatitis first management:",o:["Feed","NPO + IV fluids + pain control","Antibiotics only","Walk"],a:1,w:"Rest the pancreas."},
+{m:10,d:1,q:"Nutrition rule:",o:["Always TPN","If the gut works, use it (enteral)","Never feed","IV only"],a:1,w:"Preserves gut barrier."},
+{m:10,d:1,q:"Refeeding syndrome drops:",o:["Glucose only","Phosphate, potassium, magnesium","Sodium","Calcium only"],a:1,w:"Insulin shifts them in."},
+{m:10,d:1,q:"Liver injury labs:",o:["↑AST/ALT","↑Lipase","↑BNP","↑TSH"],a:0,w:"Hepatocyte enzymes."},
+{m:10,d:1,q:"Asterixis (flapping tremor) signals:",o:["Seizure","Hepatic encephalopathy","Stroke","Hypoglycemia"],a:1,w:"Ammonia."},
+{m:10,d:2,q:"Variceal bleed management:",o:["Discharge","Octreotide + endoscopy (band/cauterize) + PPI; ABCs","NSAIDs","Walk"],a:1,w:"↓splanchnic flow + scope."},
+{m:10,d:2,q:"GI bleed first actions:",o:["Wait for labs","ABCs, 2 large-bore IVs, fluids/blood, type & cross","Oral fluids","Ambulate"],a:1,w:"Treat as shock."},
+{m:10,d:2,q:"Lactulose endpoint:",o:["No stool","2-3 soft stools/day","10 stools","Constipation"],a:1,w:"Clears ammonia."},
+{m:10,d:2,q:"Ascites + dyspnea management:",o:["Lay flat","HOB up, Na/fluid restrict, anticipate paracentesis","Push fluids","Walk fast"],a:1,w:"Diaphragm splinting."},
+{m:10,d:2,q:"Refeeding syndrome prevention:",o:["Feed fast","Start feeds SLOW + replace PO₄/K⁺/Mg²⁺ + monitor","Skip electrolytes","TPN only"],a:1,w:"Avoid the shift."},
+{m:10,d:2,q:"Tube feeding aspiration precautions:",o:["Lay flat","HOB ≥30°, verify placement, check tolerance","No checks","Bolus fast"],a:1,w:"Prevent aspiration."},
+{m:10,d:2,q:"Liver patient + acetaminophen:",o:["Safe unlimited","Caution — hepatotoxic; limit dose","Increase it","No effect"],a:1,w:"Already-injured liver."},
+{m:10,d:2,q:"Reverse cirrhosis coagulopathy with:",o:["Heparin","Vitamin K / FFP","Aspirin","NSAIDs"],a:1,w:"Replace factors."},
+{m:10,d:2,q:"Non-selective beta-blocker in cirrhosis:",o:["Raises portal pressure","Lowers portal pressure (varices prophylaxis)","No effect","Cures it"],a:1,w:"Prevention."},
+{m:10,d:2,q:"TPN must not be:",o:["Monitored","Stopped abruptly (rebound hypoglycemia)","Given centrally","Glucose-checked"],a:1,w:"Taper."},
+{m:10,d:2,q:"Spironolactone + furosemide for ascites — watch:",o:["Glucose","Potassium (opposite effects) + volume","TSH","INR"],a:1,w:"Diuresis balance."},
+{m:10,d:2,q:"Pancreatitis complication to watch:",o:["None","Hypocalcemia, ARDS, shock, necrosis","Hyperthyroid","Stroke"],a:1,w:"Systemic."},
+{m:10,d:2,q:"Melena indicates:",o:["Lower fresh bleed","Upper GI bleed (digested blood, black tarry)","No bleed","Kidney issue"],a:1,w:"Digested in transit."},
+{m:10,d:3,q:"Cirrhosis, vomiting bright red blood, BP 84/50, HR 122:",o:["Migraine","Variceal hemorrhage — ABCs, blood, octreotide, emergent scope","Pancreatitis","Reflux"],a:1,w:"Coagulopathy + bleed = deadly."},
+{m:10,d:3,q:"Cirrhosis, confused, asterixis, constipated:",o:["Stroke","Hepatic encephalopathy — lactulose, find precipitant","Seizure","Hypoglycemia"],a:1,w:"Ammonia ↑."},
+{m:10,d:3,q:"NPO 10 days, started tube feeds, now PO₄ 1.2, K⁺ 2.9:",o:["Normal","Refeeding syndrome — slow/hold feeds, replace electrolytes, monitor","Dehydration","DKA"],a:1,w:"Insulin shift."},
+{m:10,d:3,q:"Why is a variceal bleed especially dangerous?",o:["Low pressure","High-pressure bleed in a patient who can't clot","Always small","Self-limiting"],a:1,w:"Deadly combo."},
+{m:10,d:3,q:"Hepatic encephalopathy precipitants:",o:["Exercise","GI bleed, infection, constipation","Sleep","Cold"],a:1,w:"Treat the trigger + lactulose."},
+{m:10,d:3,q:"Why aggressive fluids in pancreatitis?",o:["Comfort","Massive third-spacing → hypovolemia/shock risk","Lower lipase","Random"],a:1,w:"Fluid sequestration."},
+{m:10,d:3,q:"Cirrhosis patient drug dosing:",o:["Standard","Reduced/careful — liver clears many drugs","Doubled","IV only"],a:1,w:"Impaired metabolism."},
+{m:10,d:3,q:"Low albumin in liver failure causes:",o:["Bleeding","Ascites/edema (lost oncotic pressure)","High BP","Fever"],a:1,w:"Fluid leaves vessels."},
+{m:10,d:3,q:"Enteral over parenteral because:",o:["Cheaper only","Preserves gut barrier, fewer infections","Faster always","No reason"],a:1,w:"Use the gut."},
+{m:10,d:3,q:"Hepatorenal syndrome:",o:["Lung failure","Kidney failure secondary to advanced liver disease","Stroke","Diabetes"],a:1,w:"Organs fail together."},
+{m:10,d:3,q:"Why daily weight + abdominal girth in ascites?",o:["Habit","Track fluid accumulation/response","Looks good","Billing"],a:1,w:"Objective trend."},
+{m:10,d:3,q:"Massive hematemesis airway risk:",o:["None","Aspiration — protect airway, may need intubation","Only later","Minimal"],a:1,w:"ABCs first."},
+{m:10,d:3,q:"Pancreatitis + low Ca²⁺ (Mod 2):",o:["Ignore","Watch tetany/airway, replace calcium","Give phosphate","Raise glucose"],a:1,w:"Hypocalcemia complication."},
+
+/* ===== MODULE 11: Heme / Immune / Infection ===== */
+{m:11,d:1,q:"Blood's 3 jobs:",o:["Carry O₂, defend, clot","Digest, store, filter","Pump, sense, move","None"],a:0,w:"RBC/WBC/platelets."},
+{m:11,d:1,q:"Anemia means:",o:["High Hgb","Low Hgb → less O₂ delivery","Infection","Clotting"],a:1,w:"Anemic hypoxia (Mod 1)."},
+{m:11,d:1,q:"Most common anemia:",o:["B12","Iron-deficiency","Aplastic","Sickle"],a:1,w:"Blood loss/diet."},
+{m:11,d:1,q:"Blood is given ONLY with:",o:["Dextrose","Normal saline","LR","Water"],a:1,w:"Others cause hemolysis/clotting."},
+{m:11,d:1,q:"Deadliest transfusion reaction:",o:["Febrile","Acute hemolytic (ABO mismatch)","Allergic mild","TACO"],a:1,w:"Flank pain, dark urine, shock."},
+{m:11,d:1,q:"ANY transfusion reaction — first action:",o:["Notify only","STOP the transfusion","Slow it","Give Tylenol"],a:1,w:"Then NS, assess, notify."},
+{m:11,d:1,q:"PT/INR tracks:",o:["Heparin","Warfarin","Aspirin","Iron"],a:1,w:"aPTT = heparin."},
+{m:11,d:1,q:"aPTT tracks:",o:["Warfarin","Heparin","Iron","Platelets"],a:1,w:"PT/INR = warfarin."},
+{m:11,d:1,q:"DIC =",o:["Too few clots","Runaway clotting → consumes factors → then bleeding","Anemia","Infection only"],a:1,w:"Clot then bleed."},
+{m:11,d:1,q:"Neutropenia means:",o:["Too many WBC","Too few neutrophils → defenseless","High platelets","Anemia"],a:1,w:"Infection risk."},
+{m:11,d:1,q:"Neutropenic fever is:",o:["Benign","An emergency (cultures + antibiotics fast)","Normal","Allergic"],a:1,w:"Can't fight infection."},
+{m:11,d:1,q:"Warfarin reversal:",o:["Protamine","Vitamin K / FFP","Calcium","Insulin"],a:1,w:"Heparin → protamine."},
+{m:11,d:1,q:"Heparin reversal:",o:["Vitamin K","Protamine","FFP","Iron"],a:1,w:"Warfarin → vit K."},
+{m:11,d:1,q:"Sepsis Hour-1 bundle:",o:["Rest, fluids","L-C-A-F-V (lactate, cultures, antibiotics, fluids, vasopressors)","Antibiotics only","Oxygen only"],a:1,w:"MAP ≥65."},
+{m:11,d:1,q:"Septic shock MAP target:",o:["≥45","≥65","≥85","≥100"],a:1,w:"Vasopressors below this."},
+{m:11,d:2,q:"Transfusion safety steps:",o:["Start fast","2-RN ID check, baseline vitals, stay first 15 min, NS only","No checks","Skip vitals"],a:1,w:"Catch reactions early."},
+{m:11,d:2,q:"TACO reaction signs:",o:["Flank pain","Dyspnea, crackles, HTN, JVD (overload)","Hives","Dark urine"],a:1,w:"Slow/stop + diuretic."},
+{m:11,d:2,q:"Acute hemolytic reaction signs:",o:["Just hives","Fever, flank/back pain, dark urine, shock","Cough","Constipation"],a:1,w:"ABO mismatch — deadly."},
+{m:11,d:2,q:"DIC labs:",o:["↑platelets","↓platelets, ↑PT/aPTT, ↓fibrinogen, ↑D-dimer","Normal","↓D-dimer"],a:1,w:"Consumption."},
+{m:11,d:2,q:"DIC management:",o:["Heparin always","Treat the underlying cause + support with products","Ignore","Aspirin"],a:1,w:"It's secondary."},
+{m:11,d:2,q:"Neutropenic precautions:",o:["Isolation gown for staff only","Protect patient: hygiene, private room, no sick visitors/raw foods","Restraints","Nothing special"],a:1,w:"Patient is defenseless."},
+{m:11,d:2,q:"Cultures vs antibiotics in sepsis:",o:["Antibiotics first","Cultures BEFORE first antibiotic","No cultures","Random"],a:1,w:"ID the bug."},
+{m:11,d:2,q:"HIT (heparin-induced thrombocytopenia):",o:["High platelets","Low platelets + paradoxical clotting → STOP heparin","Bleeding only","Anemia"],a:1,w:"Immune reaction."},
+{m:11,d:2,q:"Iron supplement teaching:",o:["With antacids","Take with vitamin C; expect dark stools","IV only","At bedtime fasting always"],a:1,w:"Absorption."},
+{m:11,d:2,q:"Innate vs adaptive immunity:",o:["Same","Innate = fast/nonspecific; adaptive = specific/memory","Both slow","Both specific"],a:1,w:"Two layers."},
+{m:11,d:2,q:"First-line vasopressor in septic shock:",o:["Dopamine","Norepinephrine","Epinephrine","Vasopressin alone"],a:1,w:"To MAP ≥65."},
+{m:11,d:2,q:"FFP provides:",o:["Red cells","Clotting factors","Platelets only","Volume only"],a:1,w:"Coagulopathy."},
+{m:11,d:2,q:"Anticoagulant teaching:",o:["NSAIDs OK","Bleeding precautions, no NSAIDs without asking, med-alert ID","Stop randomly","Double dose"],a:1,w:"Bleed risk."},
+{m:11,d:3,q:"10 min into PRBC: fever, flank pain, dark urine, BP dropping:",o:["Slow it","STOP transfusion, NS, assess, notify blood bank — acute hemolytic","Tylenol","Continue"],a:1,w:"ABO mismatch."},
+{m:11,d:3,q:"Transfusion: sudden dyspnea, crackles, HTN, JVD:",o:["Hemolytic","TACO — stop/slow, upright, O₂, diuretic","Allergic","TRALI only"],a:1,w:"Overload."},
+{m:11,d:3,q:"Septic patient oozing from IV sites + gums, ↓platelets, ↑D-dimer:",o:["Allergy","DIC — treat sepsis, replace products, ICU","Anemia","Normal"],a:1,w:"Runaway coagulation."},
+{m:11,d:3,q:"Chemo patient, ANC very low, temp 38.5:",o:["Tylenol, wait","Neutropenic fever — cultures + broad-spectrum antibiotics promptly","Discharge","Ignore"],a:1,w:"Emergency."},
+{m:11,d:3,q:"Pneumonia, BP 84/48, lactate 4.5, MAP 56 after fluids:",o:["More fluids only","Septic shock — norepinephrine to MAP ≥65, trend lactate, source control","Discharge","Diuretic"],a:1,w:"Vasopressor-dependent."},
+{m:11,d:3,q:"Why does sepsis cause DIC, ARDS, AND AKI together?",o:["Coincidence","Systemic inflammatory cascade hits multiple organs","Only one at a time","Drugs"],a:1,w:"Failures travel together."},
+{m:11,d:3,q:"TRALI vs TACO:",o:["Same","TRALI = acute lung injury/hypoxia (no overload); TACO = volume overload","Both overload","Both lung injury"],a:1,w:"Different mechanism."},
+{m:11,d:3,q:"Heparin + platelets dropping day 5:",o:["Continue heparin","Suspect HIT — stop heparin, switch anticoagulant","Give more heparin","Aspirin"],a:1,w:"Paradoxical clotting risk."},
+{m:11,d:3,q:"Why stay with patient first 15 min of transfusion?",o:["Policy only","Most serious reactions occur early","Boredom","Billing"],a:1,w:"Catch it fast."},
+{m:11,d:3,q:"DIC is usually:",o:["Primary disease","Secondary to sepsis/OB/trauma/cancer","Genetic","Random"],a:1,w:"Find + treat the cause."},
+{m:11,d:3,q:"Neutropenic patient with vague malaise, no fever yet:",o:["Ignore","Monitor closely — may not mount normal signs; low threshold to act","Discharge","Wait for fever"],a:1,w:"Blunted response."},
+{m:11,d:3,q:"Why is lactate trended in sepsis?",o:["Random","Marks tissue hypoperfusion + response to treatment","Kidney test","Lung test"],a:1,w:"Mod 1 cellular O₂ debt."},
+{m:11,d:3,q:"Massive transfusion electrolyte risk:",o:["↑Na","Hypocalcemia (citrate binds Ca) + hyperK","↑glucose","None"],a:1,w:"Monitor Ca/K."},
+{m:11,d:3,q:"Pernicious anemia cause:",o:["Iron loss","B12 deficiency (lack of intrinsic factor)","Bleeding","Chronic disease"],a:1,w:"Needs B12 replacement."}
 ];
 Q.forEach((q,i)=>q.id=i);
 
 const RANKS=["🟢 Student","🔵 New Grad RN","🟣 ICU RN","🟠 Rapid Response","🔴 Resus Lead"];
-const MN={1:"Homeostasis & the Cell",2:"Fluids · Lytes · Acid–Base",3:"Cardiovascular Physiology",4:"Cardiovascular Patho",5:"Respiratory & Gas Exchange",6:"Respiratory Patho + Vent",7:"Renal + AKI / CKD / CRRT",8:"Neuro: ICP / Stroke / Seizures"};
-const RUN=15, PASS=11, MAXLVL=4, KEY="codecc_v7";
+const MN={1:"Homeostasis & the Cell",2:"Fluids · Lytes · Acid–Base",3:"Cardiovascular Physiology",4:"Cardiovascular Patho",5:"Respiratory & Gas Exchange",6:"Respiratory Patho + Vent",7:"Renal + AKI / CKD / CRRT",8:"Neuro: ICP / Stroke / Seizures",9:"Endocrine (DM/Thyroid/Adrenal)",10:"GI / Hepatic / Nutrition",11:"Heme / Immune / Infection"};
+const RUN=15, PASS=11, MAXLVL=4, KEY="codecc_v8";
 let S=load();
 function def(){return{prog:{},seen:{},last:{},best:0,streak:0,lastDay:"",sel:[1]}}
 function load(){try{return Object.assign(def(),JSON.parse(localStorage.getItem(KEY)))}catch(e){return def()}}
@@ -670,7 +803,7 @@ function buildRun(sel,level){
 function home(){
   const sel=S.sel,L=lvl(sel);
   const counts={};
-  [1,2,3,4,5,6,7,8].forEach(m=>counts[m]=Q.filter(q=>q.m===m).length);
+  [1,2,3,4,5,6,7,8,9,10,11].forEach(m=>counts[m]=Q.filter(q=>q.m===m).length);
   app.innerHTML=`
   <div class="card">
     <div class="row"><span class="badge">${RANKS[L]}</span>
@@ -682,7 +815,7 @@ function home(){
   <div class="card">
     <b>Pick module(s)</b> <span class="small">— each has its own level</span>
     <div class="mods" id="mods">
-      ${[1,2,3,4,5,6,7,8].map(m=>`<label><input type="checkbox" value="${m}" ${sel.includes(m)?"checked":""}
+      ${[1,2,3,4,5,6,7,8,9,10,11].map(m=>`<label><input type="checkbox" value="${m}" ${sel.includes(m)?"checked":""}
         onchange="reSel()"><span><b>M${m}</b> · ${MN[m]}<br><span class="small">${counts[m]} Q</span></span>
         <span class="mlvl">${RANKS[S.prog[String(m)]||0].split(" ")[0]} L${(S.prog[String(m)]||0)+1}</span></label>`).join("")}
     </div>
@@ -694,7 +827,7 @@ function home(){
 }
 function reSel(){const s=[...document.querySelectorAll('#mods input:checked')].map(x=>+x.value);
   if(s.length){S.sel=s;save();home();}}
-function allMods(){S.sel=[1,2,3,4,5,6,7,8];save();home();}
+function allMods(){S.sel=[1,2,3,4,5,6,7,8,9,10,11];save();home();}
 function reset(){if(confirm("Erase all progress?")){S=def();save();home();}}
 
 function run(){
